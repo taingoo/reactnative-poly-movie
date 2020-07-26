@@ -1,7 +1,7 @@
 import {View, Text, SafeAreaView, FlatList, StyleSheet} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import PeopleItem from '../../../components/PeopleItem';
+import PeopleItem from '../../models/PeopleItem';
 import Header from '../../../components/Header';
 import {ScrollView} from 'react-native-gesture-handler';
 
@@ -21,7 +21,7 @@ export default function MovieScreen() {
   }, []);
 
   return (
-    <SafeAreaView>
+    <View style={{paddingBottom: 110}}>
       <Header></Header>
       <ScrollView>
         <FlatList
@@ -33,6 +33,6 @@ export default function MovieScreen() {
           )}
         />
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }

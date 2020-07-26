@@ -60,7 +60,7 @@ export default function MovieScreen() {
   };
 
   return (
-    <SafeAreaView>
+    <View style={{paddingBottom: 110}}>
       <Header></Header>
       <ScrollView>
         <Title title="POPULAR"></Title>
@@ -95,6 +95,6 @@ export default function MovieScreen() {
           renderItem={({item}) => <TVItem image={item.backdrop_path} />}
         />
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }

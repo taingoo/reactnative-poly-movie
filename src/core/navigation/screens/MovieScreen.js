@@ -1,7 +1,7 @@
 import {View, Text, SafeAreaView, FlatList} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import MovieItem from '../../../components/MovieItem';
+import MovieItem from '../../models/MovieItem';
 import Title from '../../../components/Title';
 import Header from '../../../components/Header';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -60,7 +60,7 @@ export default function MovieScreen() {
   };
 
   return (
-    <View>
+    <View style={{paddingBottom: 110}}>
       <Header></Header>
       <ScrollView>
         <Title title="POPULAR"></Title>
