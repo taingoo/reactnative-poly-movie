@@ -18,6 +18,7 @@ export default function App() {
         initialRouteName="Movie"
         tabBarOptions={{
           activeTintColor: '#E54028',
+          inactiveTintColor: '#A4A4A4',
         }}>
         <Tab.Screen
           name="Movie"
@@ -48,7 +49,7 @@ export default function App() {
           }}
         />
         <Tab.Screen
-          name="People" 
+          name="People"
           component={PeopleScreen}
           options={{
             tabBarLabel: 'People',
