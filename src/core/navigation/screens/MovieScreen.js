@@ -15,38 +15,46 @@ export default function MovieScreen() {
     getNowPlaying();
     getUpComing();
     getTopRated();
-  });
+  }, []);
 
-  const getPopular = async () => {
-    const response = await fetch(
-      'https://api.themoviedb.org/3/movie/popular?api_key=cfb5e7441170e569be1265dadbb2df82',
-    );
-    const data = await response.json();
-    setPopular(data.results);
+  const getPopular = () => {
+    axios
+      .get(
+        'https://api.themoviedb.org/3/movie/popular?api_key=cfb5e7441170e569be1265dadbb2df82',
+      )
+      .then((response) => {
+        setPopular(response.data.results);
+      });
   };
 
-  const getNowPlaying = async () => {
-    const response = await fetch(
-      'https://api.themoviedb.org/3/movie/now_playing?api_key=cfb5e7441170e569be1265dadbb2df82',
-    );
-    const data = await response.json();
-    setNowPlaying(data.results);
+  const getNowPlaying = () => {
+    axios
+      .get(
+        'https://api.themoviedb.org/3/movie/now_playing?api_key=cfb5e7441170e569be1265dadbb2df82',
+      )
+      .then((response) => {
+        setNowPlaying(response.data.results);
+      });
   };
 
-  const getUpComing = async () => {
-    const response = await fetch(
-      'https://api.themoviedb.org/3/movie/upcoming?api_key=cfb5e7441170e569be1265dadbb2df82',
-    );
-    const data = await response.json();
-    setUpComing(data.results);
+  const getUpComing = () => {
+    axios
+      .get(
+        'https://api.themoviedb.org/3/movie/upcoming?api_key=cfb5e7441170e569be1265dadbb2df82',
+      )
+      .then((response) => {
+        setUpComing(response.data.results);
+      });
   };
 
-  const getTopRated = async () => {
-    const response = await fetch(
-      'https://api.themoviedb.org/3/movie/top_rated?api_key=cfb5e7441170e569be1265dadbb2df82',
-    );
-    const data = await response.json();
-    setTopRated(data.results);
+  const getTopRated = () => {
+    axios
+      .get(
+        'https://api.themoviedb.org/3/movie/top_rated?api_key=cfb5e7441170e569be1265dadbb2df82',
+      )
+      .then((response) => {
+        setTopRated(response.data.results);
+      });
   };
 
   return (

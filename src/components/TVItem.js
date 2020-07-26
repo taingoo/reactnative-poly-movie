@@ -5,7 +5,7 @@ import FastImage from 'react-native-fast-image';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-export default function MovieItem({image}) {
+export default function TVItem({image}) {
   return (
     <View>
       <FastImage
@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
   image: {
     backgroundColor: '#D8D8D8',
     borderRadius: 5,
-    margin: width * 0.01,
-    width: width * 0.31,
-    height: 170,
+    margin: width * 0.02,
+    width: width * 0.96,
+    height: 200,
   },
 });
