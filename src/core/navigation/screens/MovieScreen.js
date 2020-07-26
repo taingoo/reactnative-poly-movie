@@ -1,7 +1,9 @@
-import {View, Text, SafeAreaView, FlatList, StyleSheet} from 'react-native';
+import {View, Text, SafeAreaView, FlatList} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import MovieItem from '../../../components/MovieItem';
+import Title from '../../../components/Title';
+import Header from '../../../components/Header';
 import {ScrollView} from 'react-native-gesture-handler';
 
 export default function MovieScreen() {
@@ -58,10 +60,10 @@ export default function MovieScreen() {
   };
 
   return (
-    <SafeAreaView>
+    <View>
+      <Header></Header>
       <ScrollView>
-        <Text>POPULAR</Text>
-
+        <Title title="POPULAR"></Title>
         <FlatList
           horizontal
           data={popular}
@@ -69,8 +71,7 @@ export default function MovieScreen() {
           renderItem={({item}) => <MovieItem image={item.poster_path} />}
         />
 
-        <Text>NOW PLAYING</Text>
-
+        <Title title="NOW PLAYING"></Title>
         <FlatList
           horizontal
           data={nowplaying}
@@ -78,8 +79,7 @@ export default function MovieScreen() {
           renderItem={({item}) => <MovieItem image={item.poster_path} />}
         />
 
-        <Text>UP COMING</Text>
-
+        <Title title="UP COMING"></Title>
         <FlatList
           horizontal
           data={upcoming}
@@ -87,8 +87,7 @@ export default function MovieScreen() {
           renderItem={({item}) => <MovieItem image={item.poster_path} />}
         />
 
-        <Text>TOP RATED</Text>
-
+        <Title title="TOP RATED"></Title>
         <FlatList
           horizontal
           data={toprated}
@@ -96,6 +95,6 @@ export default function MovieScreen() {
           renderItem={({item}) => <MovieItem image={item.poster_path} />}
         />
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }

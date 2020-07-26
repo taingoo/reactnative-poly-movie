@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
   image: {
     backgroundColor: '#D8D8D8',
     borderRadius: 5,
-    margin: width * 0.02,
-    width: width * 0.96,
+    margin: width * 0.01,
+    width: width * 0.98,
     height: 200,
   },
 });

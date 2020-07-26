@@ -2,6 +2,8 @@ import {View, Text, SafeAreaView, FlatList, StyleSheet} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import TVItem from '../../../components/TVItem';
+import Title from '../../../components/Title';
+import Header from '../../../components/Header';
 import {ScrollView} from 'react-native-gesture-handler';
 
 export default function MovieScreen() {
@@ -59,9 +61,9 @@ export default function MovieScreen() {
 
   return (
     <SafeAreaView>
+      <Header></Header>
       <ScrollView>
-        <Text>POPULAR</Text>
-
+        <Title title="POPULAR"></Title>
         <FlatList
           horizontal
           data={popular}
@@ -69,8 +71,7 @@ export default function MovieScreen() {
           renderItem={({item}) => <TVItem image={item.backdrop_path} />}
         />
 
-        <Text>AIRING TODAY</Text>
-
+        <Title title="AIRING TODAY"></Title>
         <FlatList
           horizontal
           data={airing}
@@ -78,8 +79,7 @@ export default function MovieScreen() {
           renderItem={({item}) => <TVItem image={item.backdrop_path} />}
         />
 
-        <Text>ON TV</Text>
-
+        <Title title="ON TV"></Title>
         <FlatList
           horizontal
           data={onTV}
@@ -87,8 +87,7 @@ export default function MovieScreen() {
           renderItem={({item}) => <TVItem image={item.backdrop_path} />}
         />
 
-        <Text>TOP RATED</Text>
-
+        <Title title="TOP RATED"></Title>
         <FlatList
           horizontal
           data={toprated}
