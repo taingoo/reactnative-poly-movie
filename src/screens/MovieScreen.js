@@ -1,9 +1,9 @@
 import {View, Text, SafeAreaView, FlatList} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import MovieItem from '../../models/MovieItem';
-import Title from '../../../components/Title';
-import Header from '../../../components/Header';
+import MovieItem from '../models/MovieItem';
+import Title from '../components/Title';
+import Header from '../components/Header';
 import {ScrollView} from 'react-native-gesture-handler';
 
 export default function MovieScreen() {
@@ -68,7 +68,9 @@ export default function MovieScreen() {
           horizontal
           data={popular}
           keyExtractor={(item) => item.id}
-          renderItem={({item}) => <MovieItem image={item.poster_path} />}
+          renderItem={({item}) => (
+            <MovieItem goTo="DetailMovie" image={item.poster_path} />
+          )}
         />
 
         <Title title="NOW PLAYING"></Title>
@@ -76,7 +78,9 @@ export default function MovieScreen() {
           horizontal
           data={nowplaying}
           keyExtractor={(item) => item.id}
-          renderItem={({item}) => <MovieItem image={item.poster_path} />}
+          renderItem={({item}) => (
+            <MovieItem goTo="DetailMovie" image={item.poster_path} />
+          )}
         />
 
         <Title title="UP COMING"></Title>
@@ -84,7 +88,9 @@ export default function MovieScreen() {
           horizontal
           data={upcoming}
           keyExtractor={(item) => item.id}
-          renderItem={({item}) => <MovieItem image={item.poster_path} />}
+          renderItem={({item}) => (
+            <MovieItem goTo="DetailMovie" image={item.poster_path} />
+          )}
         />
 
         <Title title="TOP RATED"></Title>
@@ -92,7 +98,9 @@ export default function MovieScreen() {
           horizontal
           data={toprated}
           keyExtractor={(item) => item.id}
-          renderItem={({item}) => <MovieItem image={item.poster_path} />}
+          renderItem={({item}) => (
+            <MovieItem goTo="DetailMovie" image={item.poster_path} />
+          )}
         />
       </ScrollView>
     </View>

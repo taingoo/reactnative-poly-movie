@@ -1,9 +1,9 @@
 import {View, Text, SafeAreaView, FlatList, StyleSheet} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import TVItem from '../../../components/TVItem';
-import Title from '../../../components/Title';
-import Header from '../../../components/Header';
+import TVItem from '../models/TVItem';
+import Title from '../components/Title';
+import Header from '../components/Header';
 import {ScrollView} from 'react-native-gesture-handler';
 
 export default function MovieScreen() {
