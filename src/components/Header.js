@@ -4,7 +4,6 @@ import {
   Text,
   Image,
   Pressable,
-  TouchableOpacity,
   Dimensions,
   StyleSheet,
 } from 'react-native';
@@ -21,9 +20,11 @@ export default function Header({
   genres,
   release_date,
   runtime,
+  budget,
 }) {
   return (
     <View style={styles.container}>
+      {/* backdrop */}
       <View style={{height: 220, position: 'relative'}}>
         <FastImage
           source={{
@@ -65,9 +66,12 @@ export default function Header({
           resizeMode={FastImage.resizeMode.cover}
         />
         <View style={{paddingHorizontal: 10}}>
+          {/* title */}
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.subtitle}> askdjvbkjsdbfvj</Text>
+          {/* genres */}
+          <Text style={styles.subtitle}>{genres}</Text>
           <View style={styles.row}>
+            {/* release_date */}
             <View style={[styles.row, {marginRight: 30}]}>
               <Image
                 style={styles.icon}
@@ -75,12 +79,21 @@ export default function Header({
               <Text style={styles.subtitle}>{release_date}</Text>
             </View>
 
+            {/* runtime */}
             <View style={styles.row}>
               <Image
                 style={styles.icon}
                 source={require('../assets/icons/ic_clock.png')}></Image>
               <Text style={styles.subtitle}>{runtime}</Text>
             </View>
+          </View>
+
+          {/* budget */}
+          <View style={styles.row}>
+            <Image
+              style={styles.icon}
+              source={require('../assets/icons/ic_money.png')}></Image>
+            <Text style={styles.subtitle}>{budget}$</Text>
           </View>
         </View>
       </View>
@@ -112,13 +125,11 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   subtitle: {
-    fontFamily: 'Roboto-Thin',
+    fontFamily: 'Roboto-Light',
     fontSize: 14,
-    marginBottom: 3,
+    marginBottom: 5,
   },
   row: {
-    justifyContent: 'space-between',
-    alignItems: 'center',
     flexDirection: 'row',
   },
   icon: {
