@@ -15,9 +15,9 @@ export default StyleSheet.create({
   subtitle: {
     fontFamily: 'Roboto-Light',
     fontSize: 14,
-    marginBottom: 5,
   },
   row: {
     flexDirection: 'row',
+    marginTop: 2,
   },
 });

@@ -2,6 +2,7 @@ import React from 'react';
 import {
   View,
   Text,
+  Platform,
   Image,
   Pressable,
   Dimensions,
@@ -37,12 +38,12 @@ export default function Header({
         />
 
         <View
-          style={{backgroundColor: 'black', height: 220, opacity: 0.5}}></View>
+          style={{backgroundColor: 'black', height: 200, opacity: 0.5}}></View>
 
         <Pressable
           style={{
             position: 'absolute',
-            top: 50,
+            top: 40,
             left: 10,
           }}
           onPress={() => alert('abc')}>
@@ -58,7 +59,7 @@ export default function Header({
         style={{
           padding: 10,
           flexDirection: 'row',
-          height: 150,
+          height: 140,
         }}>
         <FastImage
           source={{
@@ -67,7 +68,7 @@ export default function Header({
           style={styles.poster}
           resizeMode={FastImage.resizeMode.cover}
         />
-        <View style={{paddingHorizontal: 10}}>
+        <View style={{paddingHorizontal: 10, marginTop: -25}}>
           {/* title */}
           <Text style={common.title}>{title}</Text>
           {/* genres */}
@@ -109,11 +110,11 @@ const styles = StyleSheet.create({
   },
   backdrop: {
     position: 'absolute',
-    height: 220,
+    height: 200,
     width: '100%',
   },
   poster: {
-    marginTop: -40,
+    marginTop: -60,
     height: 170,
     width: width * 0.31,
   },
@@ -124,7 +125,8 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginRight: 5,
-    height: 16,
-    width: 16,
+    marginTop: Platform.OS === 'ios' ? 0 : 2,
+    height: 15,
+    width: 15,
   },
 });

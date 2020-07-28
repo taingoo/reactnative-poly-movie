@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, FlatList} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView, FlatList} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import axiosConfig from '../../api/axios';
 import Header from '../../components/Header';
@@ -64,8 +64,10 @@ export default function DetailMovie({navigation, route}) {
         budget={data.budget}
       />
 
-      <Overview overview={data.overview} />
-      <Cast credits={credits} />
+      <ScrollView>
+        <Overview overview={data.overview} />
+        <Cast credits={credits} />
+      </ScrollView>
     </View>
   );
 }
