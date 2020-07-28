@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'red',
     paddingTop: Platform.OS === 'ios' ? 50 : 40,
-    paddingHorizontal: 10,
-    paddingBottom: 10,
+    paddingHorizontal: 5,
+    paddingBottom: 5,
     marginBottom: 5,
     flexDirection: 'row',
     justifyContent: 'space-between',

@@ -71,7 +71,7 @@ export default function MovieScreen() {
     <View style={{paddingBottom: 110}}>
       <SearchBar></SearchBar>
 
-      <ScrollView>
+      <ScrollView style={{padding: 5}}>
         <Title title="POPULAR"></Title>
         <FlatList
           horizontal

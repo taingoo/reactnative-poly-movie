@@ -1,11 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet, Dimensions} from 'react-native';
 import FastImage from 'react-native-fast-image';
+import common from '../../themes/common';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-export default function TVItem({image}) {
+export default function MovieItem({name, character, image}) {
   return (
     <View>
       <FastImage
@@ -15,6 +16,8 @@ export default function TVItem({image}) {
         style={styles.image}
         resizeMode={FastImage.resizeMode.cover}
       />
+      <Text style={{fontFamily: 'Roboto-Bold', fontSize: 14}}>{name}</Text>
+      <Text style={common.subtitle}>{character}</Text>
     </View>
   );
 }
@@ -22,9 +25,9 @@ export default function TVItem({image}) {
 const styles = StyleSheet.create({
   image: {
     backgroundColor: '#D8D8D8',
-    borderRadius: 5,
-    marginRight: width * 0.01,
-    width: width * 0.98,
-    height: 200,
+    marginRight: width * 0.02,
+    marginBottom: 5,
+    width: width * 0.31,
+    height: 170,
   },
 });

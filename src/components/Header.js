@@ -8,12 +8,13 @@ import {
   StyleSheet,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
+import common from '../themes/common';
+import {useNavigation} from '@react-navigation/native';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 export default function Header({
-  navigation,
   backdrop,
   poster,
   title,
@@ -22,6 +23,7 @@ export default function Header({
   runtime,
   budget,
 }) {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       {/* backdrop */}
@@ -43,8 +45,8 @@ export default function Header({
             top: 50,
             left: 10,
           }}
-          onPress={() => alert('back')}>
-          <View style={styles.row}>
+          onPress={() => alert('abc')}>
+          <View style={common.row}>
             <Image
               style={styles.icon}
               source={require('../assets/icons/ic_back.png')}></Image>
@@ -56,7 +58,7 @@ export default function Header({
         style={{
           padding: 10,
           flexDirection: 'row',
-          height: 200,
+          height: 150,
         }}>
         <FastImage
           source={{
@@ -67,33 +69,33 @@ export default function Header({
         />
         <View style={{paddingHorizontal: 10}}>
           {/* title */}
-          <Text style={styles.title}>{title}</Text>
+          <Text style={common.title}>{title}</Text>
           {/* genres */}
-          <Text style={styles.subtitle}>{genres}</Text>
-          <View style={styles.row}>
+          <Text style={common.subtitle}>{genres}</Text>
+          <View style={common.row}>
             {/* release_date */}
-            <View style={[styles.row, {marginRight: 30}]}>
+            <View style={[common.row, {marginRight: 30}]}>
               <Image
                 style={styles.icon}
                 source={require('../assets/icons/ic_calendar.png')}></Image>
-              <Text style={styles.subtitle}>{release_date}</Text>
+              <Text style={common.subtitle}>{release_date}</Text>
             </View>
 
             {/* runtime */}
-            <View style={styles.row}>
+            <View style={common.row}>
               <Image
                 style={styles.icon}
                 source={require('../assets/icons/ic_clock.png')}></Image>
-              <Text style={styles.subtitle}>{runtime}</Text>
+              <Text style={common.subtitle}>{runtime}</Text>
             </View>
           </View>
 
           {/* budget */}
-          <View style={styles.row}>
+          <View style={common.row}>
             <Image
               style={styles.icon}
               source={require('../assets/icons/ic_money.png')}></Image>
-            <Text style={styles.subtitle}>{budget}$</Text>
+            <Text style={common.subtitle}>{budget}$</Text>
           </View>
         </View>
       </View>
@@ -102,7 +104,8 @@ export default function Header({
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    backgroundColor: 'white',
+    marginBottom: 10,
   },
   backdrop: {
     position: 'absolute',
@@ -118,19 +121,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontFamily: 'Roboto-Regular',
-  },
-  title: {
-    fontFamily: 'Roboto-Bold',
-    fontSize: 20,
-    marginBottom: 5,
-  },
-  subtitle: {
-    fontFamily: 'Roboto-Light',
-    fontSize: 14,
-    marginBottom: 5,
-  },
-  row: {
-    flexDirection: 'row',
   },
   icon: {
     marginRight: 5,
