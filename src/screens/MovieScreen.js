@@ -62,6 +62,7 @@ export default function MovieScreen() {
   return (
     <View style={{paddingBottom: 110}}>
       <SearchBar></SearchBar>
+
       <ScrollView>
         <Title title="POPULAR"></Title>
         <FlatList
@@ -69,7 +70,11 @@ export default function MovieScreen() {
           data={popular}
           keyExtractor={(item) => item.id}
           renderItem={({item}) => (
-            <MovieItem goTo="DetailMovie" image={item.poster_path} />
+            <MovieItem
+              goTo="DetailMovie"
+              id={item.id}
+              image={item.poster_path}
+            />
           )}
         />
 
