@@ -1,8 +1,8 @@
 import {View, Text, SafeAreaView, FlatList, StyleSheet} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import PeopleItem from '../models/PeopleItem';
-import Header from '../components/Header';
+import PeopleItem from '../components/List/PeopleItem';
+import SearchBar from '../components/SearchBar';
 import {ScrollView} from 'react-native-gesture-handler';
 
 const numColumns = 2;
@@ -22,7 +22,7 @@ export default function MovieScreen() {
 
   return (
     <View style={{paddingBottom: 110}}>
-      <Header></Header>
+      <SearchBar></SearchBar>
       <ScrollView>
         <FlatList
           numColumns={numColumns}
