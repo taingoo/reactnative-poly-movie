@@ -1,6 +1,6 @@
 import {View, Text, SafeAreaView, FlatList} from 'react-native';
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import axiosConfig from '../api/axios';
 import MovieItem from '../components/List/MovieItem';
 import Title from '../components/Title';
 import SearchBar from '../components/SearchBar';
@@ -20,40 +20,48 @@ export default function MovieScreen() {
   }, []);
 
   const getPopular = () => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/movie/popular?api_key=cfb5e7441170e569be1265dadbb2df82',
-      )
+    axiosConfig
+      .get('/movie/popular', {
+        params: {
+          api_key: 'cfb5e7441170e569be1265dadbb2df82',
+        },
+      })
       .then((response) => {
         setPopular(response.data.results);
       });
   };
 
   const getNowPlaying = () => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/movie/now_playing?api_key=cfb5e7441170e569be1265dadbb2df82',
-      )
+    axiosConfig
+      .get('movie/now_playing', {
+        params: {
+          api_key: 'cfb5e7441170e569be1265dadbb2df82',
+        },
+      })
       .then((response) => {
         setNowPlaying(response.data.results);
       });
   };
 
   const getUpComing = () => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/movie/upcoming?api_key=cfb5e7441170e569be1265dadbb2df82',
-      )
+    axiosConfig
+      .get('/movie/upcoming', {
+        params: {
+          api_key: 'cfb5e7441170e569be1265dadbb2df82',
+        },
+      })
       .then((response) => {
         setUpComing(response.data.results);
       });
   };
 
   const getTopRated = () => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/movie/top_rated?api_key=cfb5e7441170e569be1265dadbb2df82',
-      )
+    axiosConfig
+      .get('/movie/top_rated', {
+        params: {
+          api_key: 'cfb5e7441170e569be1265dadbb2df82',
+        },
+      })
       .then((response) => {
         setTopRated(response.data.results);
       });
@@ -68,7 +76,7 @@ export default function MovieScreen() {
         <FlatList
           horizontal
           data={popular}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
             <MovieItem
               goTo="DetailMovie"
@@ -82,7 +90,7 @@ export default function MovieScreen() {
         <FlatList
           horizontal
           data={nowplaying}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
             <MovieItem goTo="DetailMovie" image={item.poster_path} />
           )}
@@ -92,7 +100,7 @@ export default function MovieScreen() {
         <FlatList
           horizontal
           data={upcoming}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
             <MovieItem goTo="DetailMovie" image={item.poster_path} />
           )}
@@ -102,7 +110,7 @@ export default function MovieScreen() {
         <FlatList
           horizontal
           data={toprated}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
             <MovieItem goTo="DetailMovie" image={item.poster_path} />
           )}

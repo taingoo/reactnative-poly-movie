@@ -1,6 +1,6 @@
 import {View, Text, SafeAreaView, FlatList, StyleSheet} from 'react-native';
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+import axiosConfig from '../api/axios';
 import TVItem from '../components/List/TVItem';
 import Title from '../components/Title';
 import SearchBar from '../components/SearchBar';
@@ -20,40 +20,48 @@ export default function MovieScreen() {
   }, []);
 
   const getPopular = () => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/tv/popular?api_key=cfb5e7441170e569be1265dadbb2df82',
-      )
+    axiosConfig
+      .get('/tv/popular', {
+        params: {
+          api_key: 'cfb5e7441170e569be1265dadbb2df82',
+        },
+      })
       .then((response) => {
         setPopular(response.data.results);
       });
   };
 
   const getAiring = () => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/tv/airing_today?api_key=cfb5e7441170e569be1265dadbb2df82',
-      )
+    axiosConfig
+      .get('/tv/airing_today', {
+        params: {
+          api_key: 'cfb5e7441170e569be1265dadbb2df82',
+        },
+      })
       .then((response) => {
         setAiring(response.data.results);
       });
   };
 
   const getOnTV = () => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/tv/on_the_air?api_key=cfb5e7441170e569be1265dadbb2df82',
-      )
+    axiosConfig
+      .get('/tv/on_the_air', {
+        params: {
+          api_key: 'cfb5e7441170e569be1265dadbb2df82',
+        },
+      })
       .then((response) => {
         setOnTV(response.data.results);
       });
   };
 
   const getTopRated = () => {
-    axios
-      .get(
-        'https://api.themoviedb.org/3/tv/top_rated?api_key=cfb5e7441170e569be1265dadbb2df82',
-      )
+    axiosConfig
+      .get('/tv/top_rated', {
+        params: {
+          api_key: 'cfb5e7441170e569be1265dadbb2df82',
+        },
+      })
       .then((response) => {
         setTopRated(response.data.results);
       });
@@ -67,7 +75,7 @@ export default function MovieScreen() {
         <FlatList
           horizontal
           data={popular}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => <TVItem image={item.backdrop_path} />}
         />
 
@@ -75,7 +83,7 @@ export default function MovieScreen() {
         <FlatList
           horizontal
           data={airing}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => <TVItem image={item.backdrop_path} />}
         />
 
@@ -83,7 +91,7 @@ export default function MovieScreen() {
         <FlatList
           horizontal
           data={onTV}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => <TVItem image={item.backdrop_path} />}
         />
 
@@ -91,7 +99,7 @@ export default function MovieScreen() {
         <FlatList
           horizontal
           data={toprated}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => <TVItem image={item.backdrop_path} />}
         />
       </ScrollView>
