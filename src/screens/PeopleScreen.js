@@ -29,7 +29,11 @@ export default function MovieScreen() {
           data={popular}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
-            <PeopleItem image={item.profile_path} name={item.name} />
+            <PeopleItem
+              goTo="DetailPeople"
+              image={item.profile_path}
+              name={item.name}
+            />
           )}
         />
       </ScrollView>

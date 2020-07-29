@@ -1,20 +1,24 @@
 import React from 'react';
-import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {View, Text, Pressable, StyleSheet, Dimensions} from 'react-native';
 import FastImage from 'react-native-fast-image';
+import {useNavigation} from '@react-navigation/native';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-export default function TVItem({image}) {
+export default function TVItem({goTo, id, image}) {
+  const navigation = useNavigation();
   return (
     <View>
-      <FastImage
-        source={{
-          uri: `https://image.tmdb.org/t/p/w500${image}`,
-        }}
-        style={styles.image}
-        resizeMode={FastImage.resizeMode.cover}
-      />
+      <Pressable onPress={() => navigation.navigate(goTo, {id})}>
+        <FastImage
+          source={{
+            uri: `https://image.tmdb.org/t/p/w500${image}`,
+          }}
+          style={styles.image}
+          resizeMode={FastImage.resizeMode.cover}
+        />
+      </Pressable>
     </View>
   );
 }

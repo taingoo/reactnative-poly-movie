@@ -1,23 +1,25 @@
 import {View, Text, SafeAreaView, ScrollView, FlatList} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import axiosConfig from '../../api/axios';
-import Header from '../../components/Header/HeaderMovie';
+import Header from '../../components/Header/HeaderTV';
 import Overview from '../../components/DetailScreen/Overview';
 import Cast from '../../components/DetailScreen/Cast';
+import Season from '../../components/DetailScreen/Season';
 import YouTube from 'react-native-youtube';
 import common from '../../themes/common';
 import helper from '../../untils/helper';
 
-export default function DetailMovie({navigation, route}) {
+export default function DetailTV({navigation, route}) {
   const [data, setData] = useState({});
   const [genres, setGenres] = useState('-');
   const [runtime, setRuntime] = useState('-');
   const [credits, setCredits] = useState([]);
   const [videos, setVideos] = useState([]);
+  const [seasons, setSeasons] = useState([]);
 
   useEffect(() => {
     axiosConfig
-      .get(`/movie/${route.params.id}`, {
+      .get(`/tv/${route.params.id}`, {
         params: {
           api_key: 'cfb5e7441170e569be1265dadbb2df82',
         },
@@ -25,12 +27,13 @@ export default function DetailMovie({navigation, route}) {
       .then((response) => {
         setData(response.data);
         setGenres(helper.getGenres(response.data.genres));
-        setRuntime(helper.getRuntime(response.data.runtime));
+        setRuntime(helper.getRuntime(response.data.episode_run_time));
+        setSeasons(response.data.seasons);
       });
 
     //getCredits;
     axiosConfig
-      .get(`/movie/${route.params.id}/credits`, {
+      .get(`/tv/${route.params.id}/credits`, {
         params: {
           api_key: 'cfb5e7441170e569be1265dadbb2df82',
         },
@@ -42,7 +45,7 @@ export default function DetailMovie({navigation, route}) {
 
     //getVideos;
     axiosConfig
-      .get(`/movie/${route.params.id}/videos`, {
+      .get(`/tv/${route.params.id}/videos`, {
         params: {
           api_key: 'cfb5e7441170e569be1265dadbb2df82',
         },
@@ -57,9 +60,9 @@ export default function DetailMovie({navigation, route}) {
       <Header
         backdrop={data.backdrop_path}
         poster={data.poster_path}
-        title={data.title}
+        name={data.name}
         genres={genres}
-        release_date={data.release_date}
+        release_date={data.first_air_date}
         runtime={runtime}
         budget={data.budget}
         vote_average={data.vote_average * 10}
@@ -69,6 +72,7 @@ export default function DetailMovie({navigation, route}) {
       <ScrollView style={{marginBottom: 20}}>
         <Overview overview={data.overview} />
         <Cast credits={credits} />
+        <Season seasons={seasons}></Season>
 
         <View style={common.container}>
           <Text style={common.heading}>Trailers</Text>

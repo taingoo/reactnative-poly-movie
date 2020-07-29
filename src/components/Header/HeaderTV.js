@@ -5,6 +5,7 @@ import {
   Platform,
   Image,
   Pressable,
+  TouchableOpacity,
   Dimensions,
   StyleSheet,
 } from 'react-native';
@@ -19,12 +20,13 @@ const height = Dimensions.get('window').height;
 export default function Header({
   backdrop,
   poster,
-  title,
+  name,
   genres,
   release_date,
   runtime,
   budget,
   vote_average,
+  backTo,
 }) {
   const navigation = useNavigation();
   return (
@@ -42,26 +44,26 @@ export default function Header({
         <View
           style={{backgroundColor: 'black', height: 200, opacity: 0.5}}></View>
 
-        <Pressable
+        <TouchableOpacity
           style={{
             position: 'absolute',
             top: 40,
             left: 10,
           }}
-          onPress={() => alert('abc')}>
+          onPress={() => navigation.navigate(backTo)}>
           <View style={common.row}>
             <Image
               style={styles.icon}
               source={require('../../assets/icons/ic_back.png')}></Image>
             <Text style={styles.backButton}>Back</Text>
           </View>
-        </Pressable>
+        </TouchableOpacity>
       </View>
       <View
         style={{
           padding: 10,
           flexDirection: 'row',
-          height: 135,
+          height: 140,
         }}>
         <FastImage
           source={{
@@ -71,10 +73,10 @@ export default function Header({
           resizeMode={FastImage.resizeMode.cover}
         />
         <View style={{paddingHorizontal: 10, marginTop: -25}}>
-          {/* title */}
-          <Text style={common.title}>{title}</Text>
+          {/* name */}
+          <Text style={common.title}>{name}</Text>
           {/* genres */}
-          <View style={common.row}>
+          <View style={[common.row, {width: width * 0.6}]}>
             <Text style={[common.subtitle, {fontFamily: 'Roboto-LightItalic'}]}>
               {genres}
             </Text>
@@ -89,20 +91,12 @@ export default function Header({
             </View>
 
             {/* runtime */}
-            <View style={common.row}>
+            <View style={[common.row, {marginBottom: 5}]}>
               <Image
                 style={styles.icon}
                 source={require('../../assets/icons/ic_clock.png')}></Image>
               <Text style={common.subtitle}>{runtime}</Text>
             </View>
-          </View>
-
-          {/* budget */}
-          <View style={[common.row, {marginBottom: 5}]}>
-            <Image
-              style={styles.icon}
-              source={require('../../assets/icons/ic_money.png')}></Image>
-            <Text style={common.subtitle}>{budget}$</Text>
           </View>
 
           <ProgressCircle
@@ -138,7 +132,7 @@ const styles = StyleSheet.create({
   },
   backButton: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: 'Roboto-Regular',
   },
   icon: {

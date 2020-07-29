@@ -1,21 +1,32 @@
 import React from 'react';
-import {View, Text, StyleSheet, Dimensions, Platform} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  Dimensions,
+  Platform,
+} from 'react-native';
 import FastImage from 'react-native-fast-image';
+import {useNavigation} from '@react-navigation/native';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-export default function MovieItem({image, name}) {
+export default function PeopleItem({goTo, id, image, name}) {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <FastImage
-        source={{
-          uri: `https://image.tmdb.org/t/p/w500${image}`,
-        }}
-        style={styles.image}
-        resizeMode={FastImage.resizeMode.cover}
-      />
-      <Text style={styles.name}>{name}</Text>
+      <Pressable onPress={() => navigation.navigate(goTo, {id})}>
+        <FastImage
+          source={{
+            uri: `https://image.tmdb.org/t/p/w500${image}`,
+          }}
+          style={styles.image}
+          resizeMode={FastImage.resizeMode.cover}
+        />
+        <Text style={styles.name}>{name}</Text>
+      </Pressable>
     </View>
   );
 }

@@ -76,7 +76,9 @@ export default function MovieScreen() {
           horizontal
           data={popular}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => <TVItem image={item.backdrop_path} />}
+          renderItem={({item}) => (
+            <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
+          )}
         />
 
         <Title title="AIRING TODAY"></Title>
@@ -84,7 +86,9 @@ export default function MovieScreen() {
           horizontal
           data={airing}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => <TVItem image={item.backdrop_path} />}
+          renderItem={({item}) => (
+            <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
+          )}
         />
 
         <Title title="ON TV"></Title>
@@ -92,7 +96,9 @@ export default function MovieScreen() {
           horizontal
           data={onTV}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => <TVItem image={item.backdrop_path} />}
+          renderItem={({item}) => (
+            <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
+          )}
         />
 
         <Title title="TOP RATED"></Title>
@@ -100,7 +106,9 @@ export default function MovieScreen() {
           horizontal
           data={toprated}
           keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => <TVItem image={item.backdrop_path} />}
+          renderItem={({item}) => (
+            <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
+          )}
         />
       </ScrollView>
     </View>

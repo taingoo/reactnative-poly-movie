@@ -1,4 +1,7 @@
-import {StyleSheet, Platform} from 'react-native';
+import {StyleSheet, Platform, Dimensions} from 'react-native';
+
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
 export default StyleSheet.create({
   container: {
@@ -14,8 +17,9 @@ export default StyleSheet.create({
     marginVertical: 8,
   },
   title: {
+    width: width * 0.6,
     fontFamily: 'Roboto-Bold',
-    fontSize: 20,
+    fontSize: 18,
   },
   subtitle: {
     fontFamily: 'Roboto-Light',
@@ -23,6 +27,17 @@ export default StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    marginTop: Platform.OS === 'ios' ? 4 : 0,
+    marginTop: Platform.OS === 'ios' ? 3 : 0,
+  },
+  backButton: {
+    color: 'white',
+    fontSize: 14,
+    fontFamily: 'Roboto-Regular',
+  },
+  icon: {
+    marginRight: 5,
+    marginTop: Platform.OS === 'ios' ? 0 : 2,
+    height: 15,
+    width: 15,
   },
 });

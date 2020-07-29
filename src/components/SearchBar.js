@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-export default function Header() {
+export default function SearchBar() {
   const [value, onChangeText] = useState('');
   return (
     <LinearGradient colors={['#FF6A00', '#EE0979']} style={styles.container}>
