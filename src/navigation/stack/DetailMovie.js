@@ -4,12 +4,15 @@ import axiosConfig from '../../api/axios';
 import Header from '../../components/DetailScreen/Header';
 import Overview from '../../components/DetailScreen/Overview';
 import Cast from '../../components/DetailScreen/Cast';
+import YouTube from 'react-native-youtube';
+import common from '../../themes/common';
 
 export default function DetailMovie({navigation, route}) {
   const [data, setData] = useState({});
   const [genres, setGenres] = useState('-');
   const [runtime, setRuntime] = useState('-');
   const [credits, setCredits] = useState([]);
+  const [videos, setVideos] = useState([]);
 
   const getRuntime = (runtime) => {
     let hour = runtime / 60;
@@ -24,6 +27,15 @@ export default function DetailMovie({navigation, route}) {
       str = str + data[i].name + ', ';
     }
     setGenres(str.substring(0, str.length - 2));
+  };
+
+  const getVideoID = (data) => {
+    let idList = [];
+    for (let i = 0; i < data.length; i++) {
+      idList.push(data[i].key);
+    }
+    setVideos(idList);
+    console.log(idList);
   };
 
   useEffect(() => {
@@ -50,6 +62,17 @@ export default function DetailMovie({navigation, route}) {
         setCredits(response.data.cast);
         //console.log(response.data.cast);
       });
+
+    //getVideos;
+    axiosConfig
+      .get(`/movie/${route.params.id}/videos`, {
+        params: {
+          api_key: 'cfb5e7441170e569be1265dadbb2df82',
+        },
+      })
+      .then((response) => {
+        getVideoID(response.data.results);
+      });
   }, [route.params.id, genres]);
 
   return (
@@ -65,9 +88,19 @@ export default function DetailMovie({navigation, route}) {
         vote_average={data.vote_average * 10}
       />
 
-      <ScrollView>
+      <ScrollView style={{marginBottom: 20}}>
         <Overview overview={data.overview} />
         <Cast credits={credits} />
+
+        <View style={common.container}>
+          <Text style={common.heading}>Trailers</Text>
+          <YouTube
+            apiKey="AIzaSyAR4ca3a6Xoxfn4gIO9M9Exv6o4zqCVlIQ"
+            videoIds={videos}
+            play
+            style={{alignSelf: 'stretch', height: 220}}
+          />
+        </View>
       </ScrollView>
     </View>
   );

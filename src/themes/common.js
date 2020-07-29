@@ -1,6 +1,12 @@
 import {StyleSheet, Platform} from 'react-native';
 
 export default StyleSheet.create({
+  container: {
+    paddingHorizontal: 10,
+    paddingBottom: 10,
+    backgroundColor: 'white',
+    marginBottom: 10,
+  },
   heading: {
     fontFamily: 'Roboto-Bold',
     fontSize: 16,

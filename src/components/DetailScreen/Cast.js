@@ -5,7 +5,7 @@ import CreditItem from '../List/CreditItem';
 
 export default function Cast({credits}) {
   return (
-    <View style={styles.container} Î>
+    <View style={common.container} Î>
       <Text style={common.heading}>Cast</Text>
       <FlatList
         horizontal
@@ -22,10 +22,3 @@ export default function Cast({credits}) {
     </View>
   );
 }
-const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-    backgroundColor: 'white',
-    marginBottom: 10,
-  },
-});

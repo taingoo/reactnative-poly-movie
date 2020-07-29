@@ -61,7 +61,7 @@ export default function Header({
         style={{
           padding: 10,
           flexDirection: 'row',
-          height: 140,
+          height: 135,
         }}>
         <FastImage
           source={{

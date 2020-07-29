@@ -92,7 +92,11 @@ export default function MovieScreen() {
           data={nowplaying}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
-            <MovieItem goTo="DetailMovie" image={item.poster_path} />
+            <MovieItem
+              goTo="DetailMovie"
+              id={item.id}
+              image={item.poster_path}
+            />
           )}
         />
 
@@ -102,7 +106,11 @@ export default function MovieScreen() {
           data={upcoming}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
-            <MovieItem goTo="DetailMovie" image={item.poster_path} />
+            <MovieItem
+              goTo="DetailMovie"
+              id={item.id}
+              image={item.poster_path}
+            />
           )}
         />
 
@@ -112,7 +120,11 @@ export default function MovieScreen() {
           data={toprated}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
-            <MovieItem goTo="DetailMovie" image={item.poster_path} />
+            <MovieItem
+              goTo="DetailMovie"
+              id={item.id}
+              image={item.poster_path}
+            />
           )}
         />
       </ScrollView>
