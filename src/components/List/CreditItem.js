@@ -8,7 +8,7 @@ const height = Dimensions.get('window').height;
 
 export default function MovieItem({name, character, image}) {
   return (
-    <View>
+    <View style={styles.container}>
       <FastImage
         source={{
           uri: `https://image.tmdb.org/t/p/w500${image}`,
@@ -23,11 +23,13 @@ export default function MovieItem({name, character, image}) {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    width: width * 0.31,
+    marginRight: width * 0.02,
+  },
   image: {
     backgroundColor: '#D8D8D8',
-    marginRight: width * 0.02,
-    marginBottom: 5,
-    width: width * 0.31,
     height: 170,
+    marginBottom: 5,
   },
 });

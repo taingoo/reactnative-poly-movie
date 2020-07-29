@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 
 export default StyleSheet.create({
   heading: {
@@ -10,7 +10,6 @@ export default StyleSheet.create({
   title: {
     fontFamily: 'Roboto-Bold',
     fontSize: 20,
-    marginBottom: 5,
   },
   subtitle: {
     fontFamily: 'Roboto-Light',
@@ -18,6 +17,6 @@ export default StyleSheet.create({
   },
   row: {
     flexDirection: 'row',
-    marginTop: 2,
+    marginTop: Platform.OS === 'ios' ? 4 : 0,
   },
 });

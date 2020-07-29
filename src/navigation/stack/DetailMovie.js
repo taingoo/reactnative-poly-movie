@@ -1,9 +1,9 @@
 import {View, Text, SafeAreaView, ScrollView, FlatList} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import axiosConfig from '../../api/axios';
-import Header from '../../components/Header';
-import Overview from '../../components/Overview';
-import Cast from '../../components/Cast';
+import Header from '../../components/DetailScreen/Header';
+import Overview from '../../components/DetailScreen/Overview';
+import Cast from '../../components/DetailScreen/Cast';
 
 export default function DetailMovie({navigation, route}) {
   const [data, setData] = useState({});
@@ -62,6 +62,7 @@ export default function DetailMovie({navigation, route}) {
         release_date={data.release_date}
         runtime={runtime}
         budget={data.budget}
+        vote_average={data.vote_average * 10}
       />
 
       <ScrollView>

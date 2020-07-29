@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
-import common from '../themes/common';
-import CreditItem from './List/CreditItem';
+import common from '../../themes/common';
+import CreditItem from '../List/CreditItem';
 
 export default function Cast({credits}) {
   return (

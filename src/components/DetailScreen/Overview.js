@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import common from '../themes/common';
+import common from '../../themes/common';
 
 export default function Overview({overview}) {
   return (
