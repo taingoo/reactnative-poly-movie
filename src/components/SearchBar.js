@@ -12,7 +12,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {useNavigation} from '@react-navigation/native';
 
-export default function SearchBar({goTo, backTo}) {
+export default function SearchBar({goTo, tag, backTo}) {
   const navigation = useNavigation();
   const [query, onChangeText] = useState('');
   return (
@@ -30,7 +30,7 @@ export default function SearchBar({goTo, backTo}) {
           alignItems: 'center',
           marginBottom: 10,
         }}>
-        <Pressable onPress={() => navigation.navigate(goTo, {query})}>
+        <Pressable onPress={() => navigation.navigate(goTo, {tag, query})}>
           <View style={styles.search}>
             <FontAwesome name="search" color="white" size={25} />
           </View>
@@ -44,7 +44,8 @@ export default function SearchBar({goTo, backTo}) {
         />
         <Pressable
           onPress={() => navigation.navigate(backTo)}
-          style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}ß>
+          style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
+          ß>
           <Image
             style={styles.tinyLogo}
             source={require('../assets/icons/SuBeeTeam.png')}
@@ -56,7 +57,6 @@ export default function SearchBar({goTo, backTo}) {
 }
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'red',
     paddingTop: Platform.OS === 'ios' ? 50 : 40,
     paddingHorizontal: 5,
     paddingBottom: 5,

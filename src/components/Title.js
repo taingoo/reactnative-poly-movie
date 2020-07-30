@@ -1,15 +1,14 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import common from '../themes/common';
+import {useNavigation} from '@react-navigation/native';
 
-export default function Title({title}) {
-  const onPress = () => {
-    alert(title);
-  };
+export default function Title({title, goTo, tag}) {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
       <Text style={common.heading}>{title}</Text>
-      <TouchableOpacity onPress={onPress}>
+      <TouchableOpacity onPress={() => navigation.navigate(goTo, {tag})}>
         <Text style={styles.more}>SEE ALL</Text>
       </TouchableOpacity>
     </View>

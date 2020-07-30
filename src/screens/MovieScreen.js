@@ -68,11 +68,11 @@ export default function MovieScreen() {
   };
 
   return (
-    <View style={{paddingBottom: 110}}>
-      <SearchBar goTo="SearchScreen" backTo="Main"></SearchBar>
+    <View style={{marginBottom: 120}}>
+      <SearchBar goTo="SearchScreen" backTo="Main" tag="movie"></SearchBar>
 
       <ScrollView style={{padding: 5}}>
-        <Title title="POPULAR"></Title>
+        <Title title="POPULAR" goTo="ViewAllMovieScreen" tag="popular"></Title>
         <FlatList
           horizontal
           data={popular}
@@ -86,7 +86,10 @@ export default function MovieScreen() {
           )}
         />
 
-        <Title title="NOW PLAYING"></Title>
+        <Title
+          title="NOW PLAYING"
+          goTo="ViewAllMovieScreen"
+          tag="nowplaying"></Title>
         <FlatList
           horizontal
           data={nowplaying}
@@ -100,7 +103,10 @@ export default function MovieScreen() {
           )}
         />
 
-        <Title title="UP COMING"></Title>
+        <Title
+          title="UP COMING"
+          goTo="ViewAllMovieScreen"
+          tag="upcoming"></Title>
         <FlatList
           horizontal
           data={upcoming}
@@ -114,7 +120,10 @@ export default function MovieScreen() {
           )}
         />
 
-        <Title title="TOP RATED"></Title>
+        <Title
+          title="TOP RATED"
+          goTo="ViewAllMovieScreen"
+          tag="toprated"></Title>
         <FlatList
           horizontal
           data={toprated}

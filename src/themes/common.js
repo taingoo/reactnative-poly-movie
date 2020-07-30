@@ -14,7 +14,7 @@ export default StyleSheet.create({
     fontFamily: 'Roboto-Bold',
     fontSize: 16,
     color: '#E54028',
-    marginVertical: 8,
+    marginVertical: 10,
   },
   title: {
     width: width * 0.6,

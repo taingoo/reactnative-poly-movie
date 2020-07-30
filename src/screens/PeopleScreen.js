@@ -21,8 +21,8 @@ export default function MovieScreen() {
   }, []);
 
   return (
-    <View style={{paddingBottom: 110}}>
-      <SearchBar goTo="SearchScreen" backTo="Main"></SearchBar>
+    <View style={{paddingBottom: 120}}>
+      <SearchBar goTo="SearchScreen" backTo="Main" tag="people"></SearchBar>
 
       <ScrollView>
         <FlatList
