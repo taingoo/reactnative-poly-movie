@@ -13,11 +13,11 @@ import {useNavigation} from '@react-navigation/native';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-export default function PeopleItem({goTo, id, image, name}) {
+export default function PeopleItem({goTo, id, knownFor, image, name}) {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => navigation.navigate(goTo, {id})}>
+      <Pressable onPress={() => navigation.navigate(goTo, {id, knownFor})}>
         <FastImage
           source={{
             uri: `https://image.tmdb.org/t/p/w500${image}`,

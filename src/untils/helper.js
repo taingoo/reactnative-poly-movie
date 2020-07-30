@@ -20,3 +20,12 @@ exports.getVideoID = (data) => {
   }
   return idList;
 };
+
+exports.getGender = (int) => {
+  let gender = 'Male';
+  if (int === 1) {
+    gender = 'Female';
+    return gender;
+  }
+  return gender;
+};

@@ -21,49 +21,65 @@ const height = Dimensions.get('window').height;
 export default function Header({backTo, image}) {
   const navigation = useNavigation();
   return (
-    <LinearGradient colors={['#FF6A00', '#EE0979']} style={styles.container}>
-      <StatusBar
-        translucent={true}
-        backgroundColor={'transparent'}
-        barStyle="light-content"
-      />
+    <View>
+      <LinearGradient colors={['#FF6A00', '#EE0979']} style={styles.container}>
+        <StatusBar
+          translucent={true}
+          backgroundColor={'transparent'}
+          barStyle="light-content"
+        />
 
-      <TouchableOpacity
-        style={{
-          position: 'absolute',
-          top: 40,
-          left: 10,
-        }}
-        onPress={() => navigation.navigate(backTo)}>
-        <View style={common.row}>
-          <Image
-            style={common.icon}
-            source={require('../../assets/icons/ic_back.png')}></Image>
-          <Text style={common.backButton}>Back</Text>
-        </View>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={{
+            width: 100,
+            position: 'absolute',
+            top: 40,
+            left: 10,
+          }}
+          onPress={() => navigation.navigate(backTo)}>
+          <View style={common.row}>
+            <Image
+              style={common.icon}
+              source={require('../../assets/icons/ic_back.png')}></Image>
+            <Text style={common.backButton}>Back</Text>
+          </View>
+        </TouchableOpacity>
 
+        {/* <Image
+        style={styles.background}
+        resizeMode="stretch"
+        source={require('../../assets/images/backgroundHeaderPeople.png')}
+      /> */}
+      </LinearGradient>
       <FastImage
         source={{
-          uri:
-            'https://vnn-imgs-f.vgcloud.vn/2018/12/30/01/hacker-tung-tin-gia-pha-hoai-nganh-ban-le-viet-nam.jpg',
+          uri: `https://image.tmdb.org/t/p/w500${image}`,
         }}
         style={styles.image}
         resizeMode={FastImage.resizeMode.cover}
       />
-    </LinearGradient>
+    </View>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    height: 250,
+    height: 140,
     backgroundColor: 'red',
     paddingTop: Platform.OS === 'ios' ? 50 : 40,
   },
   image: {
+    backgroundColor: 'white',
+    marginTop: -70,
     borderRadius: 100,
     alignSelf: 'center',
-    height: 150,
-    width: 150,
+    height: 140,
+    width: 140,
+  },
+  background: {
+    position: 'absolute',
+    alignSelf: 'center',
+    bottom: 0,
+    height: 120,
+    width: width * 0.9,
   },
 });

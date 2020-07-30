@@ -31,6 +31,8 @@ export default function MovieScreen() {
           renderItem={({item}) => (
             <PeopleItem
               goTo="DetailPeople"
+              id={item.id}
+              knownFor={item.known_for}
               image={item.profile_path}
               name={item.name}
             />
