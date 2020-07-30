@@ -6,6 +6,7 @@ import Main from './stack/Main';
 import DetailMovie from './stack/DetailMovie';
 import DetailTV from './stack/DetailTV';
 import DetailPeople from './stack/DetailPeople';
+import SearchScreen from './stack/SearchScreen';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ export default function RootStack() {
         <Stack.Screen name="DetailMovie" component={DetailMovie} />
         <Stack.Screen name="DetailTV" component={DetailTV} />
         <Stack.Screen name="DetailPeople" component={DetailPeople} />
+        <Stack.Screen name="SearchScreen" component={SearchScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

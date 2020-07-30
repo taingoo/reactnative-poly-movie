@@ -69,7 +69,7 @@ export default function MovieScreen() {
 
   return (
     <View style={{paddingBottom: 110}}>
-      <SearchBar></SearchBar>
+      <SearchBar goTo="SearchScreen" backTo="Main"></SearchBar>
 
       <ScrollView style={{padding: 5}}>
         <Title title="POPULAR"></Title>

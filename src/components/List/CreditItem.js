@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   },
   image: {
     backgroundColor: '#D8D8D8',
-    height: 170,
+    height: 180,
     marginBottom: 5,
   },
 });
