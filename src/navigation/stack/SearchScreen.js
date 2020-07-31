@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, FlatList} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {FlatList, View} from 'react-native';
 import axiosConfig from '../../api/axios';
-import SearchBar from '../../components/SearchBar';
 import MovieItem from '../../components/List/MovieItem';
-import TVItem from '../../components/List/TVItem';
 import PeopleItem from '../../components/List/PeopleItem';
+import TVItem from '../../components/List/TVItem';
+import SearchBar from '../../components/SearchBar';
 
 export default function SearchScreen({route}) {
   const [data, setData] = useState([]);
@@ -50,10 +50,7 @@ export default function SearchScreen({route}) {
   if (`${route.params.tag}` === 'movie') {
     return (
       <View style={{marginBottom: 120}}>
-        <SearchBar
-          goTo="SearchScreen"
-          backTo="Main"
-          tag={route.params.tag}></SearchBar>
+        <SearchBar goTo="SearchScreen" backTo="Main" tag={route.params.tag} />
         <FlatList
           numColumns={numColumn}
           data={data}
@@ -72,10 +69,7 @@ export default function SearchScreen({route}) {
   } else if (`${route.params.tag}` === 'tv') {
     return (
       <View style={{marginBottom: 120}}>
-        <SearchBar
-          goTo="SearchScreen"
-          backTo="Main"
-          tag={route.params.tag}></SearchBar>
+        <SearchBar goTo="SearchScreen" backTo="Main" tag={route.params.tag} />
         <FlatList
           data={data}
           keyExtractor={(item, index) => index.toString()}
@@ -89,10 +83,7 @@ export default function SearchScreen({route}) {
   } else {
     return (
       <View style={{marginBottom: 120}}>
-        <SearchBar
-          goTo="SearchScreen"
-          backTo="Main"
-          tag={route.params.tag}></SearchBar>
+        <SearchBar goTo="SearchScreen" backTo="Main" tag={route.params.tag} />
         <FlatList
           numColumns={numColumn}
           data={data}

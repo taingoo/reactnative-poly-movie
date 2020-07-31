@@ -1,14 +1,14 @@
-import {View, Text, ScrollView, StyleSheet} from 'react-native';
-import React, {useState, useEffect} from 'react';
-import axiosConfig from '../../api/axios';
-import Header from '../../components/Header/HeaderTV';
-import Overview from '../../components/DetailScreen/Overview';
-import Cast from '../../components/DetailScreen/Cast';
-import Season from '../../components/DetailScreen/Season';
+import React, {useEffect, useState} from 'react';
+import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import YouTube from 'react-native-youtube';
-import common from '../../themes/common';
-import helper from '../../untils/helper';
+import axiosConfig from '../../api/axios';
+import Cast from '../../components/DetailScreen/Cast';
+import Overview from '../../components/DetailScreen/Overview';
+import Season from '../../components/DetailScreen/Season';
+import Header from '../../components/Header/HeaderTV';
 import DetailHolder from '../../components/Placeholder/DetailHolder';
+import common from '../../themes/common';
+import * as helper from '../../utils/helper';
 
 export default function DetailTV({navigation, route}) {
   const [data, setData] = useState({});
@@ -77,7 +77,7 @@ export default function DetailTV({navigation, route}) {
         <ScrollView style={{marginBottom: 20}}>
           <Overview overview={data.overview} />
           <Cast credits={credits} />
-          <Season seasons={seasons}></Season>
+          <Season seasons={seasons} />
 
           <View style={common.container}>
             <Text style={common.heading}>Trailers</Text>
@@ -95,7 +95,7 @@ export default function DetailTV({navigation, route}) {
       </View>
     );
   } else {
-    return <DetailHolder></DetailHolder>;
+    return <DetailHolder />;
   }
 }
 

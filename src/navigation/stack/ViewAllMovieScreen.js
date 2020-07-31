@@ -1,5 +1,5 @@
-import {View, Text, SafeAreaView, FlatList, StyleSheet} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import {FlatList, StyleSheet, View} from 'react-native';
 import axiosConfig from '../../api/axios';
 import MovieItem from '../../components/List/MovieItem';
 import NavBar from '../../components/NavBar';
@@ -68,7 +68,7 @@ export default function ViewAllMovieScreen({route}) {
   if (`${route.params.tag}` === 'popular') {
     return (
       <View style={styles.container}>
-        <NavBar page={page} total={data.total_pages} backTo="Main"></NavBar>
+        <NavBar page={page} total={data.total_pages} backTo="Main" />
         <View style={{paddingHorizontal: 5}}>
           <FlatList
             numColumns={numColumn}
@@ -90,7 +90,7 @@ export default function ViewAllMovieScreen({route}) {
   } else if (`${route.params.tag}` === 'nowplaying') {
     return (
       <View style={styles.container}>
-        <NavBar page={page} total={data.total_pages} backTo="Main"></NavBar>
+        <NavBar page={page} total={data.total_pages} backTo="Main" />
         <View style={{paddingHorizontal: 5}}>
           <FlatList
             numColumns={numColumn}
@@ -112,7 +112,7 @@ export default function ViewAllMovieScreen({route}) {
   } else if (`${route.params.tag}` === 'upcoming') {
     return (
       <View style={styles.container}>
-        <NavBar page={page} total={data.total_pages} backTo="Main"></NavBar>
+        <NavBar page={page} total={data.total_pages} backTo="Main" />
         <View style={{paddingHorizontal: 5}}>
           <FlatList
             numColumns={numColumn}
@@ -134,7 +134,7 @@ export default function ViewAllMovieScreen({route}) {
   } else {
     return (
       <View style={styles.container}>
-        <NavBar page={page} total={data.total_pages} backTo="Main"></NavBar>
+        <NavBar page={page} total={data.total_pages} backTo="Main" />
         <View style={{paddingHorizontal: 5}}>
           <FlatList
             numColumns={numColumn}

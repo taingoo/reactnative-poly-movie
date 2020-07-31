@@ -1,11 +1,11 @@
-import {View, Text, SafeAreaView, FlatList} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import {FlatList, View} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import axiosConfig from '../api/axios';
 import MovieItem from '../components/List/MovieItem';
-import Title from '../components/Title';
-import SearchBar from '../components/SearchBar';
-import {ScrollView} from 'react-native-gesture-handler';
 import MovieHolder from '../components/Placeholder/MovieHolder';
+import SearchBar from '../components/SearchBar';
+import Title from '../components/Title';
 
 export default function MovieScreen() {
   const [popular, setPopular] = useState([]);
@@ -73,13 +73,10 @@ export default function MovieScreen() {
   if (loading) {
     return (
       <View style={{marginBottom: 120}}>
-        <SearchBar goTo="SearchScreen" backTo="Main" tag="movie"></SearchBar>
+        <SearchBar goTo="SearchScreen" backTo="Main" tag="movie" />
 
         <ScrollView style={{paddingHorizontal: 5}}>
-          <Title
-            title="POPULAR"
-            goTo="ViewAllMovieScreen"
-            tag="popular"></Title>
+          <Title title="POPULAR" goTo="ViewAllMovieScreen" tag="popular" />
           <FlatList
             horizontal
             data={popular}
@@ -96,7 +93,8 @@ export default function MovieScreen() {
           <Title
             title="NOW PLAYING"
             goTo="ViewAllMovieScreen"
-            tag="nowplaying"></Title>
+            tag="nowplaying"
+          />
           <FlatList
             horizontal
             data={nowplaying}
@@ -110,10 +108,7 @@ export default function MovieScreen() {
             )}
           />
 
-          <Title
-            title="UP COMING"
-            goTo="ViewAllMovieScreen"
-            tag="upcoming"></Title>
+          <Title title="UP COMING" goTo="ViewAllMovieScreen" tag="upcoming" />
           <FlatList
             horizontal
             data={upcoming}
@@ -127,10 +122,7 @@ export default function MovieScreen() {
             )}
           />
 
-          <Title
-            title="TOP RATED"
-            goTo="ViewAllMovieScreen"
-            tag="toprated"></Title>
+          <Title title="TOP RATED" goTo="ViewAllMovieScreen" tag="toprated" />
           <FlatList
             horizontal
             data={toprated}
@@ -147,6 +139,6 @@ export default function MovieScreen() {
       </View>
     );
   } else {
-    return <MovieHolder></MovieHolder>;
+    return <MovieHolder />;
   }
 }

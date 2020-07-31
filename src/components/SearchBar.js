@@ -1,16 +1,16 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {
-  TextInput,
-  View,
-  StyleSheet,
   Image,
-  StatusBar,
   Platform,
   Pressable,
+  StatusBar,
+  StyleSheet,
+  TextInput,
+  View,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import {useNavigation} from '@react-navigation/native';
 
 export default function SearchBar({goTo, tag, backTo}) {
   const navigation = useNavigation();

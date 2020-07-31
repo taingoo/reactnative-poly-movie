@@ -1,11 +1,11 @@
-import {View, Text, SafeAreaView, FlatList, StyleSheet} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import {FlatList, View} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import axiosConfig from '../api/axios';
 import TVItem from '../components/List/TVItem';
-import Title from '../components/Title';
-import SearchBar from '../components/SearchBar';
-import {ScrollView} from 'react-native-gesture-handler';
 import TVHolder from '../components/Placeholder/TVHolder';
+import SearchBar from '../components/SearchBar';
+import Title from '../components/Title';
 
 export default function MovieScreen() {
   const [popular, setPopular] = useState([]);
@@ -73,10 +73,10 @@ export default function MovieScreen() {
   if (loading) {
     return (
       <View style={{paddingBottom: 120}}>
-        <SearchBar goTo="SearchScreen" backTo="Main" tag="tv"></SearchBar>
+        <SearchBar goTo="SearchScreen" backTo="Main" tag="tv" />
 
         <ScrollView style={{paddingHorizontal: 5}}>
-          <Title title="POPULAR" goTo="ViewAllTVScreen" tag="popular"></Title>
+          <Title title="POPULAR" goTo="ViewAllTVScreen" tag="popular" />
           <FlatList
             horizontal
             data={popular}
@@ -86,10 +86,7 @@ export default function MovieScreen() {
             )}
           />
 
-          <Title
-            title="AIRING TODAY"
-            goTo="ViewAllTVScreen"
-            tag="airing"></Title>
+          <Title title="AIRING TODAY" goTo="ViewAllTVScreen" tag="airing" />
           <FlatList
             horizontal
             data={airing}
@@ -99,7 +96,7 @@ export default function MovieScreen() {
             )}
           />
 
-          <Title title="ON TV" goTo="ViewAllTVScreen" tag="ontv"></Title>
+          <Title title="ON TV" goTo="ViewAllTVScreen" tag="ontv" />
           <FlatList
             horizontal
             data={onTV}
@@ -109,10 +106,7 @@ export default function MovieScreen() {
             )}
           />
 
-          <Title
-            title="TOP RATED"
-            goTo="ViewAllTVScreen"
-            tag="toprated"></Title>
+          <Title title="TOP RATED" goTo="ViewAllTVScreen" tag="toprated" />
           <FlatList
             horizontal
             data={toprated}
@@ -125,6 +119,6 @@ export default function MovieScreen() {
       </View>
     );
   } else {
-    return <TVHolder></TVHolder>;
+    return <TVHolder />;
   }
 }

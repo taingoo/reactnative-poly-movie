@@ -1,5 +1,5 @@
-import {View, Text, SafeAreaView, FlatList, StyleSheet} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import {FlatList, StyleSheet, View} from 'react-native';
 import axiosConfig from '../../api/axios';
 import TVItem from '../../components/List/TVItem';
 import NavBar from '../../components/NavBar';
@@ -67,7 +67,7 @@ export default function ViewAllTVScreen({route}) {
   if (`${route.params.tag}` === 'popular') {
     return (
       <View style={styles.container}>
-        <NavBar page={page} total={data.total_pages} backTo="Main"></NavBar>
+        <NavBar page={page} total={data.total_pages} backTo="Main" />
         <View style={{paddingHorizontal: 5}}>
           <FlatList
             data={popular}
@@ -88,7 +88,7 @@ export default function ViewAllTVScreen({route}) {
   } else if (`${route.params.tag}` === 'airing') {
     return (
       <View style={styles.container}>
-        <NavBar page={page} total={data.total_pages} backTo="Main"></NavBar>
+        <NavBar page={page} total={data.total_pages} backTo="Main" />
         <View style={{paddingHorizontal: 5}}>
           <FlatList
             data={nowplaying}
@@ -109,7 +109,7 @@ export default function ViewAllTVScreen({route}) {
   } else if (`${route.params.tag}` === 'ontv') {
     return (
       <View style={styles.container}>
-        <NavBar page={page} total={data.total_pages} backTo="Main"></NavBar>
+        <NavBar page={page} total={data.total_pages} backTo="Main" />
         <View style={{paddingHorizontal: 5}}>
           <FlatList
             data={upcoming}
@@ -130,7 +130,7 @@ export default function ViewAllTVScreen({route}) {
   } else {
     return (
       <View style={styles.container}>
-        <NavBar page={page} total={data.total_pages} backTo="Main"></NavBar>
+        <NavBar page={page} total={data.total_pages} backTo="Main" />
         <View style={{paddingHorizontal: 5}}>
           <FlatList
             data={toprated}

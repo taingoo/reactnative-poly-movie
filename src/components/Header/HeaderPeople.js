@@ -1,19 +1,18 @@
-import React, {useState} from 'react';
-import {
-  TextInput,
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Image,
-  StatusBar,
-  Dimensions,
-  Platform,
-} from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import FastImage from 'react-native-fast-image';
-import common from '../../themes/common';
 import {useNavigation} from '@react-navigation/native';
+import React from 'react';
+import {
+  Dimensions,
+  Image,
+  Platform,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import FastImage from 'react-native-fast-image';
+import LinearGradient from 'react-native-linear-gradient';
+import common from '../../themes/common';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -40,7 +39,8 @@ export default function Header({backTo, image}) {
           <View style={common.row}>
             <Image
               style={common.icon}
-              source={require('../../assets/icons/ic_back.png')}></Image>
+              source={require('../../assets/icons/ic_back.png')}
+            />
             <Text style={common.backButton}>Back</Text>
           </View>
         </TouchableOpacity>

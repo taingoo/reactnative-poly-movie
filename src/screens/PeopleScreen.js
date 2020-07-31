@@ -1,10 +1,10 @@
-import {View, Text, SafeAreaView, FlatList, StyleSheet} from 'react-native';
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
+import {FlatList, View} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
 import axiosConfig from '../api/axios';
 import PeopleItem from '../components/List/PeopleItem';
-import SearchBar from '../components/SearchBar';
-import {ScrollView} from 'react-native-gesture-handler';
 import PeopleHolder from '../components/Placeholder/PeopleHolder';
+import SearchBar from '../components/SearchBar';
 
 const numColumns = 2;
 
@@ -26,7 +26,7 @@ export default function MovieScreen() {
   if (loading) {
     return (
       <View style={{paddingBottom: 120}}>
-        <SearchBar goTo="SearchScreen" backTo="Main" tag="people"></SearchBar>
+        <SearchBar goTo="SearchScreen" backTo="Main" tag="people" />
 
         <ScrollView>
           <FlatList
@@ -47,6 +47,6 @@ export default function MovieScreen() {
       </View>
     );
   } else {
-    return <PeopleHolder></PeopleHolder>;
+    return <PeopleHolder />;
   }
 }

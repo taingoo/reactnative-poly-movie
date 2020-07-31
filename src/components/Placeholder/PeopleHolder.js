@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import {Dimensions, StyleSheet, View} from 'react-native';
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import SearchBar from '../SearchBar';
 
@@ -9,7 +9,7 @@ const height = Dimensions.get('window').height;
 export default function PeopleHolder() {
   return (
     <View style={{flex: 1, marginBottom: 120}}>
-      <SearchBar></SearchBar>
+      <SearchBar />
 
       <SkeletonPlaceholder>
         <View style={styles.container}>

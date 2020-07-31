@@ -1,13 +1,10 @@
-import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import * as React from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MovieScreen from '../../screens/MovieScreen';
-import TVScreen from '../../screens/TVScreen';
 import PeopleScreen from '../../screens/PeopleScreen';
+import TVScreen from '../../screens/TVScreen';
 
 const Tab = createBottomTabNavigator();
 

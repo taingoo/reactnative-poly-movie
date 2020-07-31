@@ -1,7 +1,7 @@
-import React from 'react';
-import {View, Text, Pressable, StyleSheet, Dimensions} from 'react-native';
-import FastImage from 'react-native-fast-image';
 import {useNavigation} from '@react-navigation/native';
+import React from 'react';
+import {Dimensions, Pressable, StyleSheet, View} from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;

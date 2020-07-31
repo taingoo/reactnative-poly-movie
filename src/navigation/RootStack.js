@@ -1,15 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import Main from './stack/Main';
+import React, {useEffect} from 'react';
+import SplashScreen from 'react-native-splash-screen';
 import DetailMovie from './stack/DetailMovie';
-import DetailTV from './stack/DetailTV';
 import DetailPeople from './stack/DetailPeople';
+import DetailTV from './stack/DetailTV';
+import Main from './stack/Main';
 import SearchScreen from './stack/SearchScreen';
 import ViewAllMovieScreen from './stack/ViewAllMovieScreen';
 import ViewAllTVScreen from './stack/ViewAllTVScreen';
-import SplashScreen from 'react-native-splash-screen';
 
 const Stack = createStackNavigator();
 

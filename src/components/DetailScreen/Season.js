@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet, FlatList} from 'react-native';
-import common from '../../themes/common';
+import {FlatList, Text, View} from 'react-native';
 import SeasonItem from '../../components/List/SeasonItem';
+import common from '../../themes/common';
 
 export default function Season({seasons}) {
   return (

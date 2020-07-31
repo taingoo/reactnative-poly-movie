@@ -1,16 +1,16 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
+  Image,
+  Platform,
   Pressable,
   StatusBar,
-  Platform,
-  Image,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
-import common from '../themes/common';
 import LinearGradient from 'react-native-linear-gradient';
-import {useNavigation} from '@react-navigation/native';
+import common from '../themes/common';
 
 export default function NavBar({page, total, backTo}) {
   const navigation = useNavigation();

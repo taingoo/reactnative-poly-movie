@@ -1,18 +1,17 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {
-  View,
-  Text,
-  Platform,
-  Image,
-  Pressable,
-  TouchableOpacity,
   Dimensions,
+  Image,
+  Platform,
   StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import common from '../../themes/common';
-import {useNavigation} from '@react-navigation/native';
 import ProgressCircle from 'react-native-progress-circle';
+import common from '../../themes/common';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -41,8 +40,7 @@ export default function Header({
           resizeMode={FastImage.resizeMode.cover}
         />
 
-        <View
-          style={{backgroundColor: 'black', height: 200, opacity: 0.5}}></View>
+        <View style={{backgroundColor: 'black', height: 200, opacity: 0.5}} />
 
         <TouchableOpacity
           style={{
@@ -54,7 +52,8 @@ export default function Header({
           <View style={common.row}>
             <Image
               style={styles.icon}
-              source={require('../../assets/icons/ic_back.png')}></Image>
+              source={require('../../assets/icons/ic_back.png')}
+            />
             <Text style={styles.backButton}>Back</Text>
           </View>
         </TouchableOpacity>
@@ -86,7 +85,8 @@ export default function Header({
             <View style={[common.row, {marginRight: 30}]}>
               <Image
                 style={styles.icon}
-                source={require('../../assets/icons/ic_calendar.png')}></Image>
+                source={require('../../assets/icons/ic_calendar.png')}
+              />
               <Text style={common.subtitle}>{release_date}</Text>
             </View>
 
@@ -94,7 +94,8 @@ export default function Header({
             <View style={common.row}>
               <Image
                 style={styles.icon}
-                source={require('../../assets/icons/ic_clock.png')}></Image>
+                source={require('../../assets/icons/ic_clock.png')}
+              />
               <Text style={common.subtitle}>{runtime}</Text>
             </View>
           </View>
@@ -103,7 +104,8 @@ export default function Header({
           <View style={[common.row, {marginBottom: 5}]}>
             <Image
               style={styles.icon}
-              source={require('../../assets/icons/ic_money.png')}></Image>
+              source={require('../../assets/icons/ic_money.png')}
+            />
             <Text style={common.subtitle}>{budget}$</Text>
           </View>
 

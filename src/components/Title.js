@@ -1,7 +1,7 @@
-import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import common from '../themes/common';
 import {useNavigation} from '@react-navigation/native';
+import React from 'react';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import common from '../themes/common';
 
 export default function Title({title, goTo, tag}) {
   const navigation = useNavigation();
