@@ -62,7 +62,7 @@ export default function ViewAllTVScreen({route}) {
           setTopRated(response.data.results);
         });
     }
-  }, [page, popular, route.params.tag]);
+  }, [page, route.params.tag]);
 
   if (`${route.params.tag}` === 'popular') {
     return (

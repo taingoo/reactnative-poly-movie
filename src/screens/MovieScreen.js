@@ -5,12 +5,14 @@ import MovieItem from '../components/List/MovieItem';
 import Title from '../components/Title';
 import SearchBar from '../components/SearchBar';
 import {ScrollView} from 'react-native-gesture-handler';
+import MovieHolder from '../components/Placeholder/MovieHolder';
 
 export default function MovieScreen() {
   const [popular, setPopular] = useState([]);
   const [nowplaying, setNowPlaying] = useState([]);
   const [upcoming, setUpComing] = useState([]);
   const [toprated, setTopRated] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getPopular();
@@ -64,79 +66,87 @@ export default function MovieScreen() {
       })
       .then((response) => {
         setTopRated(response.data.results);
+        setLoading(true);
       });
   };
 
-  return (
-    <View style={{marginBottom: 120}}>
-      <SearchBar goTo="SearchScreen" backTo="Main" tag="movie"></SearchBar>
+  if (loading) {
+    return (
+      <View style={{marginBottom: 120}}>
+        <SearchBar goTo="SearchScreen" backTo="Main" tag="movie"></SearchBar>
 
-      <ScrollView style={{padding: 5}}>
-        <Title title="POPULAR" goTo="ViewAllMovieScreen" tag="popular"></Title>
-        <FlatList
-          horizontal
-          data={popular}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => (
-            <MovieItem
-              goTo="DetailMovie"
-              id={item.id}
-              image={item.poster_path}
-            />
-          )}
-        />
+        <ScrollView style={{paddingHorizontal: 5}}>
+          <Title
+            title="POPULAR"
+            goTo="ViewAllMovieScreen"
+            tag="popular"></Title>
+          <FlatList
+            horizontal
+            data={popular}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <MovieItem
+                goTo="DetailMovie"
+                id={item.id}
+                image={item.poster_path}
+              />
+            )}
+          />
 
-        <Title
-          title="NOW PLAYING"
-          goTo="ViewAllMovieScreen"
-          tag="nowplaying"></Title>
-        <FlatList
-          horizontal
-          data={nowplaying}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => (
-            <MovieItem
-              goTo="DetailMovie"
-              id={item.id}
-              image={item.poster_path}
-            />
-          )}
-        />
+          <Title
+            title="NOW PLAYING"
+            goTo="ViewAllMovieScreen"
+            tag="nowplaying"></Title>
+          <FlatList
+            horizontal
+            data={nowplaying}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <MovieItem
+                goTo="DetailMovie"
+                id={item.id}
+                image={item.poster_path}
+              />
+            )}
+          />
 
-        <Title
-          title="UP COMING"
-          goTo="ViewAllMovieScreen"
-          tag="upcoming"></Title>
-        <FlatList
-          horizontal
-          data={upcoming}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => (
-            <MovieItem
-              goTo="DetailMovie"
-              id={item.id}
-              image={item.poster_path}
-            />
-          )}
-        />
+          <Title
+            title="UP COMING"
+            goTo="ViewAllMovieScreen"
+            tag="upcoming"></Title>
+          <FlatList
+            horizontal
+            data={upcoming}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <MovieItem
+                goTo="DetailMovie"
+                id={item.id}
+                image={item.poster_path}
+              />
+            )}
+          />
 
-        <Title
-          title="TOP RATED"
-          goTo="ViewAllMovieScreen"
-          tag="toprated"></Title>
-        <FlatList
-          horizontal
-          data={toprated}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => (
-            <MovieItem
-              goTo="DetailMovie"
-              id={item.id}
-              image={item.poster_path}
-            />
-          )}
-        />
-      </ScrollView>
-    </View>
-  );
+          <Title
+            title="TOP RATED"
+            goTo="ViewAllMovieScreen"
+            tag="toprated"></Title>
+          <FlatList
+            horizontal
+            data={toprated}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <MovieItem
+                goTo="DetailMovie"
+                id={item.id}
+                image={item.poster_path}
+              />
+            )}
+          />
+        </ScrollView>
+      </View>
+    );
+  } else {
+    return <MovieHolder></MovieHolder>;
+  }
 }

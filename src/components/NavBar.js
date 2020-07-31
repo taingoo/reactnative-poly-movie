@@ -23,7 +23,7 @@ export default function NavBar({page, total, backTo}) {
       />
 
       <Pressable onPress={() => navigation.navigate(backTo)}>
-        <View style={{width: 50}}>
+        <View style={{width: 25}}>
           <Image
             style={styles.icon}
             source={require('../assets/icons/left-chevron.png')}
@@ -38,7 +38,7 @@ export default function NavBar({page, total, backTo}) {
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center',
-            marginLeft: -50,
+            paddingRight: 25,
           },
         ]}>
         <Text style={styles.text}>{page}</Text>
@@ -58,12 +58,12 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: 'Roboto-Black',
-    fontSize: 25,
+    fontSize: 24,
     color: 'white',
   },
   icon: {
-    height: 25,
+    height: 24,
     marginTop: 5,
-    width: 25,
+    width: 24,
   },
 });

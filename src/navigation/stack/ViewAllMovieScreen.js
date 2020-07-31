@@ -55,7 +55,7 @@ export default function ViewAllMovieScreen({route}) {
         .get('/movie/top_rated', {
           params: {
             api_key: 'cfb5e7441170e569be1265dadbb2df82',
-            page: {page},
+            page: page,
           },
         })
         .then((response) => {
@@ -63,7 +63,7 @@ export default function ViewAllMovieScreen({route}) {
           setTopRated(response.data.results);
         });
     }
-  }, [page, popular, route.params.tag]);
+  }, [page, route.params.tag]);
 
   if (`${route.params.tag}` === 'popular') {
     return (

@@ -5,12 +5,14 @@ import TVItem from '../components/List/TVItem';
 import Title from '../components/Title';
 import SearchBar from '../components/SearchBar';
 import {ScrollView} from 'react-native-gesture-handler';
+import TVHolder from '../components/Placeholder/TVHolder';
 
 export default function MovieScreen() {
   const [popular, setPopular] = useState([]);
   const [airing, setAiring] = useState([]);
   const [onTV, setOnTV] = useState([]);
   const [toprated, setTopRated] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getPopular();
@@ -64,54 +66,65 @@ export default function MovieScreen() {
       })
       .then((response) => {
         setTopRated(response.data.results);
+        setLoading(true);
       });
   };
 
-  return (
-    <View style={{paddingBottom: 120}}>
-      <SearchBar goTo="SearchScreen" backTo="Main" tag="tv"></SearchBar>
+  if (loading) {
+    return (
+      <View style={{paddingBottom: 120}}>
+        <SearchBar goTo="SearchScreen" backTo="Main" tag="tv"></SearchBar>
 
-      <ScrollView style={{padding: 5}}>
-        <Title title="POPULAR" goTo="ViewAllTVScreen" tag="popular"></Title>
-        <FlatList
-          horizontal
-          data={popular}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => (
-            <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
-          )}
-        />
+        <ScrollView style={{paddingHorizontal: 5}}>
+          <Title title="POPULAR" goTo="ViewAllTVScreen" tag="popular"></Title>
+          <FlatList
+            horizontal
+            data={popular}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
+            )}
+          />
 
-        <Title title="AIRING TODAY" goTo="ViewAllTVScreen" tag="airing"></Title>
-        <FlatList
-          horizontal
-          data={airing}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => (
-            <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
-          )}
-        />
+          <Title
+            title="AIRING TODAY"
+            goTo="ViewAllTVScreen"
+            tag="airing"></Title>
+          <FlatList
+            horizontal
+            data={airing}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
+            )}
+          />
 
-        <Title title="ON TV" goTo="ViewAllTVScreen" tag="ontv"></Title>
-        <FlatList
-          horizontal
-          data={onTV}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => (
-            <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
-          )}
-        />
+          <Title title="ON TV" goTo="ViewAllTVScreen" tag="ontv"></Title>
+          <FlatList
+            horizontal
+            data={onTV}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
+            )}
+          />
 
-        <Title title="TOP RATED" goTo="ViewAllTVScreen" tag="toprated"></Title>
-        <FlatList
-          horizontal
-          data={toprated}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={({item}) => (
-            <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
-          )}
-        />
-      </ScrollView>
-    </View>
-  );
+          <Title
+            title="TOP RATED"
+            goTo="ViewAllTVScreen"
+            tag="toprated"></Title>
+          <FlatList
+            horizontal
+            data={toprated}
+            keyExtractor={(item, index) => index.toString()}
+            renderItem={({item}) => (
+              <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
+            )}
+          />
+        </ScrollView>
+      </View>
+    );
+  } else {
+    return <TVHolder></TVHolder>;
+  }
 }
