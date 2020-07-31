@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import YouTube from 'react-native-youtube';
-import axiosConfig from '../../api/axios';
-import Cast from '../../components/DetailScreen/Cast';
-import Overview from '../../components/DetailScreen/Overview';
-import Header from '../../components/Header/HeaderMovie';
-import DetailHolder from '../../components/Placeholder/DetailHolder';
-import common from '../../themes/common';
-import * as helper from '../../utils/helper';
+import axiosConfig from '../api/axios';
+import Cast from '../components/DetailScreen/Cast';
+import Overview from '../components/DetailScreen/Overview';
+import Header from '../components/Header/HeaderMovie';
+import DetailHolder from '../components/Placeholder/DetailHolder';
+import common from '../themes/common';
+import * as helper from '../utils/helper';
 
 export default function DetailMovie({navigation, route}) {
   const [data, setData] = useState({});

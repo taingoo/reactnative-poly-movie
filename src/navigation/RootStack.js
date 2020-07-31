@@ -2,13 +2,13 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import React, {useEffect} from 'react';
 import SplashScreen from 'react-native-splash-screen';
-import DetailMovie from './stack/DetailMovie';
-import DetailPeople from './stack/DetailPeople';
-import DetailTV from './stack/DetailTV';
-import Main from './stack/Main';
-import SearchScreen from './stack/SearchScreen';
-import ViewAllMovieScreen from './stack/ViewAllMovieScreen';
-import ViewAllTVScreen from './stack/ViewAllTVScreen';
+import DetailMovie from '../screens/DetailMovie';
+import DetailPeople from '../screens/DetailPeople';
+import DetailTV from '../screens/DetailTV';
+import Main from '../screens/Main';
+import SearchScreen from '../screens/SearchScreen';
+import ViewAllMovieScreen from '../screens/ViewAllMovieScreen';
+import ViewAllTVScreen from '../screens/ViewAllTVScreen';
 
 const Stack = createStackNavigator();
 

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
-import axiosConfig from '../../api/axios';
-import MovieItem from '../../components/List/MovieItem';
-import NavBar from '../../components/NavBar';
+import axiosConfig from '../api/axios';
+import MovieItem from '../components/List/MovieItem';
+import NavBar from '../components/NavBar';
 
 export default function ViewAllMovieScreen({route}) {
   const [data, setData] = useState({});

@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import YouTube from 'react-native-youtube';
-import axiosConfig from '../../api/axios';
-import Cast from '../../components/DetailScreen/Cast';
-import Overview from '../../components/DetailScreen/Overview';
-import Season from '../../components/DetailScreen/Season';
-import Header from '../../components/Header/HeaderTV';
-import DetailHolder from '../../components/Placeholder/DetailHolder';
-import common from '../../themes/common';
-import * as helper from '../../utils/helper';
+import axiosConfig from '../api/axios';
+import Cast from '../components/DetailScreen/Cast';
+import Overview from '../components/DetailScreen/Overview';
+import Season from '../components/DetailScreen/Season';
+import Header from '../components/Header/HeaderTV';
+import DetailHolder from '../components/Placeholder/DetailHolder';
+import common from '../themes/common';
+import * as helper from '../utils/helper';
 
 export default function DetailTV({navigation, route}) {
   const [data, setData] = useState({});

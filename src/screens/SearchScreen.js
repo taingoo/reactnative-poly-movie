@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, View} from 'react-native';
-import axiosConfig from '../../api/axios';
-import MovieItem from '../../components/List/MovieItem';
-import PeopleItem from '../../components/List/PeopleItem';
-import TVItem from '../../components/List/TVItem';
-import SearchBar from '../../components/SearchBar';
+import axiosConfig from '../api/axios';
+import MovieItem from '../components/List/MovieItem';
+import PeopleItem from '../components/List/PeopleItem';
+import TVItem from '../components/List/TVItem';
+import SearchBar from '../components/SearchBar';
 
 export default function SearchScreen({route}) {
   const [data, setData] = useState([]);

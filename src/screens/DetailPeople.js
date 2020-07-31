@@ -7,11 +7,11 @@ import {
   Dimensions,
 } from 'react-native';
 import React, {useState, useEffect} from 'react';
-import axiosConfig from '../../api/axios';
-import Header from '../../components/Header/HeaderPeople';
-import common from '../../themes/common';
-import * as helper from '../../utils/helper';
-import MovieItem from '../../components/List/MovieItem';
+import axiosConfig from '../api/axios';
+import Header from '../components/Header/HeaderPeople';
+import common from '../themes/common';
+import * as helper from '../utils/helper';
+import MovieItem from '../components/List/MovieItem';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;

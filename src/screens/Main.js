@@ -2,9 +2,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import MovieScreen from '../../screens/MovieScreen';
-import PeopleScreen from '../../screens/PeopleScreen';
-import TVScreen from '../../screens/TVScreen';
+import MovieScreen from '../screens/MovieScreen';
+import PeopleScreen from '../screens/PeopleScreen';
+import TVScreen from '../screens/TVScreen';
 
 const Tab = createBottomTabNavigator();
 
