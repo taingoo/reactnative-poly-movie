@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -9,10 +9,15 @@ import DetailPeople from './stack/DetailPeople';
 import SearchScreen from './stack/SearchScreen';
 import ViewAllMovieScreen from './stack/ViewAllMovieScreen';
 import ViewAllTVScreen from './stack/ViewAllTVScreen';
+import SplashScreen from 'react-native-splash-screen';
 
 const Stack = createStackNavigator();
 
 export default function RootStack() {
+  useEffect(() => {
+    SplashScreen.hide();
+  });
+
   return (
     <NavigationContainer>
       <Stack.Navigator

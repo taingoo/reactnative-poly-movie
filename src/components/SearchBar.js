@@ -32,7 +32,7 @@ export default function SearchBar({goTo, tag, backTo}) {
         }}>
         <Pressable onPress={() => navigation.navigate(goTo, {tag, query})}>
           <View style={styles.search}>
-            <FontAwesome name="search" color="white" size={25} />
+            <FontAwesome name="search" color="white" size={30} />
           </View>
         </Pressable>
 
@@ -82,7 +82,6 @@ const styles = StyleSheet.create({
     marginRight: 10,
     height: 45,
     width: 45,
-    backgroundColor: 'black',
     borderRadius: 45,
     justifyContent: 'center',
     alignItems: 'center',
