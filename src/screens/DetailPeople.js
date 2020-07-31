@@ -1,17 +1,17 @@
+import React, {useEffect, useState} from 'react';
 import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  FlatList,
   Dimensions,
+  FlatList,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
 } from 'react-native';
-import React, {useState, useEffect} from 'react';
 import axiosConfig from '../api/axios';
 import Header from '../components/Header/HeaderPeople';
+import MovieItem from '../components/List/MovieItem';
 import common from '../themes/common';
 import * as helper from '../utils/helper';
-import MovieItem from '../components/List/MovieItem';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
@@ -34,7 +34,7 @@ export default function DetailPeople({route}) {
   }, [route.params.id]);
   return (
     <View style={{flex: 1, paddingBottom: 50}}>
-      <Header backTo="Main" image={data.profile_path}></Header>
+      <Header backTo="Main" image={data.profile_path} />
       <ScrollView>
         <View style={styles.body}>
           <Text style={common.heading}>PERSONAL INFO</Text>
@@ -72,7 +72,8 @@ export default function DetailPeople({route}) {
                 id={item.id}
                 image={item.poster_path}
               />
-            )}></FlatList>
+            )}
+          />
         </View>
       </ScrollView>
     </View>

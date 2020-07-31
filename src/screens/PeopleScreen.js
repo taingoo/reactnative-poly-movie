@@ -10,7 +10,7 @@ const numColumns = 2;
 
 export default function MovieScreen() {
   const [popular, setPopular] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axiosConfig
@@ -19,34 +19,33 @@ export default function MovieScreen() {
       })
       .then((response) => {
         setPopular(response.data.results);
-        setLoading(true);
+        setLoading(false);
       });
   }, []);
 
   if (loading) {
-    return (
-      <View style={{paddingBottom: 120}}>
-        <SearchBar goTo="SearchScreen" backTo="Main" tag="people" />
-
-        <ScrollView>
-          <FlatList
-            numColumns={numColumns}
-            data={popular}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({item}) => (
-              <PeopleItem
-                goTo="DetailPeople"
-                id={item.id}
-                knownFor={item.known_for}
-                image={item.profile_path}
-                name={item.name}
-              />
-            )}
-          />
-        </ScrollView>
-      </View>
-    );
-  } else {
     return <PeopleHolder />;
   }
+  return (
+    <View style={{paddingBottom: 120}}>
+      <SearchBar goTo="SearchScreen" backTo="Main" tag="people" />
+
+      <ScrollView>
+        <FlatList
+          numColumns={numColumns}
+          data={popular}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({item}) => (
+            <PeopleItem
+              goTo="DetailPeople"
+              id={item.id}
+              knownFor={item.known_for}
+              image={item.profile_path}
+              name={item.name}
+            />
+          )}
+        />
+      </ScrollView>
+    </View>
+  );
 }

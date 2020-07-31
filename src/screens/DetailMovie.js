@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import YouTube from 'react-native-youtube';
 import axiosConfig from '../api/axios';
 import Cast from '../components/DetailScreen/Cast';
@@ -16,7 +16,7 @@ export default function DetailMovie({navigation, route}) {
   const [credits, setCredits] = useState([]);
   const [videos, setVideos] = useState([]);
   const [height, setHeight] = useState();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axiosConfig
@@ -29,6 +29,7 @@ export default function DetailMovie({navigation, route}) {
         setData(response.data);
         setGenres(helper.getGenres(response.data.genres));
         setRuntime(helper.getRuntime(response.data.runtime));
+        setLoading(false);
       });
 
     //getCredits;
@@ -40,7 +41,6 @@ export default function DetailMovie({navigation, route}) {
       })
       .then((response) => {
         setCredits(response.data.cast);
-        //console.log(response.data.cast);
       });
 
     //getVideos;
@@ -52,51 +52,43 @@ export default function DetailMovie({navigation, route}) {
       })
       .then((response) => {
         setVideos(helper.getVideoID(response.data.results));
-        setLoading(true);
       });
   }, [route.params.id, genres]);
 
   if (loading) {
-    return (
-      <View style={{flex: 1}}>
-        <Header
-          backdrop={data.backdrop_path}
-          poster={data.poster_path}
-          title={data.title}
-          genres={genres}
-          release_date={data.release_date}
-          runtime={runtime}
-          budget={data.budget}
-          vote_average={data.vote_average * 10}
-          backTo="Main"
-        />
-
-        <ScrollView style={{marginBottom: 20}}>
-          <Overview overview={data.overview} />
-          <Cast credits={credits} />
-
-          <View style={common.container}>
-            <Text style={common.heading}>Trailers</Text>
-            <YouTube
-              apiKey="AIzaSyAR4ca3a6Xoxfn4gIO9M9Exv6o4zqCVlIQ"
-              videoIds={videos}
-              play
-              style={[styles.youtube, {height: height}]}
-              onReady={() => {
-                setHeight(221);
-              }}
-            />
-          </View>
-        </ScrollView>
-      </View>
-    );
-  } else {
     return <DetailHolder />;
   }
-}
+  return (
+    <View style={{flex: 1}}>
+      <Header
+        backdrop={data.backdrop_path}
+        poster={data.poster_path}
+        title={data.title}
+        genres={genres}
+        release_date={data.release_date}
+        runtime={runtime}
+        budget={data.budget}
+        vote_average={data.vote_average * 10}
+        backTo="Main"
+      />
 
-const styles = StyleSheet.create({
-  youtube: {
-    alignSelf: 'stretch',
-  },
-});
+      <ScrollView style={{marginBottom: 20}}>
+        <Overview overview={data.overview} />
+        <Cast credits={credits} />
+
+        <View style={common.container}>
+          <Text style={common.heading}>Trailers</Text>
+          <YouTube
+            apiKey="AIzaSyAR4ca3a6Xoxfn4gIO9M9Exv6o4zqCVlIQ"
+            videoIds={videos}
+            play
+            style={{alignSelf: 'stretch', height: height}}
+            onReady={() => {
+              setHeight(221);
+            }}
+          />
+        </View>
+      </ScrollView>
+    </View>
+  );
+}

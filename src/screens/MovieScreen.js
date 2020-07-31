@@ -70,6 +70,10 @@ export default function MovieScreen() {
       });
   };
 
+  const _renderItem = ({item}) => (
+    <MovieItem goTo="DetailMovie" id={item.id} image={item.poster_path} />
+  );
+
   if (loading) {
     return (
       <View style={{marginBottom: 120}}>
@@ -81,13 +85,7 @@ export default function MovieScreen() {
             horizontal
             data={popular}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={({item}) => (
-              <MovieItem
-                goTo="DetailMovie"
-                id={item.id}
-                image={item.poster_path}
-              />
-            )}
+            renderItem={_renderItem}
           />
 
           <Title
@@ -99,13 +97,7 @@ export default function MovieScreen() {
             horizontal
             data={nowplaying}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={({item}) => (
-              <MovieItem
-                goTo="DetailMovie"
-                id={item.id}
-                image={item.poster_path}
-              />
-            )}
+            renderItem={_renderItem}
           />
 
           <Title title="UP COMING" goTo="ViewAllMovieScreen" tag="upcoming" />
@@ -113,13 +105,7 @@ export default function MovieScreen() {
             horizontal
             data={upcoming}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={({item}) => (
-              <MovieItem
-                goTo="DetailMovie"
-                id={item.id}
-                image={item.poster_path}
-              />
-            )}
+            renderItem={_renderItem}
           />
 
           <Title title="TOP RATED" goTo="ViewAllMovieScreen" tag="toprated" />
@@ -127,13 +113,7 @@ export default function MovieScreen() {
             horizontal
             data={toprated}
             keyExtractor={(item, index) => index.toString()}
-            renderItem={({item}) => (
-              <MovieItem
-                goTo="DetailMovie"
-                id={item.id}
-                image={item.poster_path}
-              />
-            )}
+            renderItem={_renderItem}
           />
         </ScrollView>
       </View>

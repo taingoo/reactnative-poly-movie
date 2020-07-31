@@ -12,7 +12,7 @@ export default function MovieScreen() {
   const [airing, setAiring] = useState([]);
   const [onTV, setOnTV] = useState([]);
   const [toprated, setTopRated] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getPopular();
@@ -66,59 +66,54 @@ export default function MovieScreen() {
       })
       .then((response) => {
         setTopRated(response.data.results);
-        setLoading(true);
+        setLoading(false);
       });
   };
 
+  const _renderItem = ({item}) => (
+    <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
+  );
+
   if (loading) {
-    return (
-      <View style={{paddingBottom: 120}}>
-        <SearchBar goTo="SearchScreen" backTo="Main" tag="tv" />
-
-        <ScrollView style={{paddingHorizontal: 5}}>
-          <Title title="POPULAR" goTo="ViewAllTVScreen" tag="popular" />
-          <FlatList
-            horizontal
-            data={popular}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({item}) => (
-              <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
-            )}
-          />
-
-          <Title title="AIRING TODAY" goTo="ViewAllTVScreen" tag="airing" />
-          <FlatList
-            horizontal
-            data={airing}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({item}) => (
-              <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
-            )}
-          />
-
-          <Title title="ON TV" goTo="ViewAllTVScreen" tag="ontv" />
-          <FlatList
-            horizontal
-            data={onTV}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({item}) => (
-              <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
-            )}
-          />
-
-          <Title title="TOP RATED" goTo="ViewAllTVScreen" tag="toprated" />
-          <FlatList
-            horizontal
-            data={toprated}
-            keyExtractor={(item, index) => index.toString()}
-            renderItem={({item}) => (
-              <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
-            )}
-          />
-        </ScrollView>
-      </View>
-    );
-  } else {
     return <TVHolder />;
   }
+  return (
+    <View style={{paddingBottom: 120}}>
+      <SearchBar goTo="SearchScreen" backTo="Main" tag="tv" />
+
+      <ScrollView style={{paddingHorizontal: 5}}>
+        <Title title="POPULAR" goTo="ViewAllTVScreen" tag="popular" />
+        <FlatList
+          horizontal
+          data={popular}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={_renderItem}
+        />
+
+        <Title title="AIRING TODAY" goTo="ViewAllTVScreen" tag="airing" />
+        <FlatList
+          horizontal
+          data={airing}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={_renderItem}
+        />
+
+        <Title title="ON TV" goTo="ViewAllTVScreen" tag="ontv" />
+        <FlatList
+          horizontal
+          data={onTV}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={_renderItem}
+        />
+
+        <Title title="TOP RATED" goTo="ViewAllTVScreen" tag="toprated" />
+        <FlatList
+          horizontal
+          data={toprated}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={_renderItem}
+        />
+      </ScrollView>
+    </View>
+  );
 }
