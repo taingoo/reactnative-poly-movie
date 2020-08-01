@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import axiosConfig from '../api/axios';
+import axiosConfig, {apiKey} from '../api/axios';
 import MovieItem from '../components/List/MovieItem';
 import MovieHolder from '../components/Placeholder/MovieHolder';
 import SearchBar from '../components/SearchBar';
@@ -22,52 +22,28 @@ export default function MovieScreen() {
   }, []);
 
   const getPopular = () => {
-    axiosConfig
-      .get('/movie/popular', {
-        params: {
-          api_key: 'cfb5e7441170e569be1265dadbb2df82',
-        },
-      })
-      .then((response) => {
-        setPopular(response.data.results);
-      });
+    axiosConfig.get(`/movie/popular?api_key=${apiKey}`).then((response) => {
+      setPopular(response.data.results);
+    });
   };
 
   const getNowPlaying = () => {
-    axiosConfig
-      .get('movie/now_playing', {
-        params: {
-          api_key: 'cfb5e7441170e569be1265dadbb2df82',
-        },
-      })
-      .then((response) => {
-        setNowPlaying(response.data.results);
-      });
+    axiosConfig.get(`movie/now_playing?api_key=${apiKey}`).then((response) => {
+      setNowPlaying(response.data.results);
+    });
   };
 
   const getUpComing = () => {
-    axiosConfig
-      .get('/movie/upcoming', {
-        params: {
-          api_key: 'cfb5e7441170e569be1265dadbb2df82',
-        },
-      })
-      .then((response) => {
-        setUpComing(response.data.results);
-      });
+    axiosConfig.get(`/movie/upcoming?api_key=${apiKey}`).then((response) => {
+      setUpComing(response.data.results);
+    });
   };
 
   const getTopRated = () => {
-    axiosConfig
-      .get('/movie/top_rated', {
-        params: {
-          api_key: 'cfb5e7441170e569be1265dadbb2df82',
-        },
-      })
-      .then((response) => {
-        setTopRated(response.data.results);
-        setLoading(true);
-      });
+    axiosConfig.get(`/movie/top_rated?api_key=${apiKey}`).then((response) => {
+      setTopRated(response.data.results);
+      setLoading(true);
+    });
   };
 
   const _renderItem = ({item}) => (

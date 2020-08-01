@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, View} from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
-import axiosConfig from '../api/axios';
+import axiosConfig, {apiKey} from '../api/axios';
 import TVItem from '../components/List/TVItem';
 import TVHolder from '../components/Placeholder/TVHolder';
 import SearchBar from '../components/SearchBar';
@@ -22,52 +22,28 @@ export default function MovieScreen() {
   }, []);
 
   const getPopular = () => {
-    axiosConfig
-      .get('/tv/popular', {
-        params: {
-          api_key: 'cfb5e7441170e569be1265dadbb2df82',
-        },
-      })
-      .then((response) => {
-        setPopular(response.data.results);
-      });
+    axiosConfig.get(`/tv/popular?api_key=${apiKey}`).then((response) => {
+      setPopular(response.data.results);
+    });
   };
 
   const getAiring = () => {
-    axiosConfig
-      .get('/tv/airing_today', {
-        params: {
-          api_key: 'cfb5e7441170e569be1265dadbb2df82',
-        },
-      })
-      .then((response) => {
-        setAiring(response.data.results);
-      });
+    axiosConfig.get(`/tv/airing_today?api_key=${apiKey}`).then((response) => {
+      setAiring(response.data.results);
+    });
   };
 
   const getOnTV = () => {
-    axiosConfig
-      .get('/tv/on_the_air', {
-        params: {
-          api_key: 'cfb5e7441170e569be1265dadbb2df82',
-        },
-      })
-      .then((response) => {
-        setOnTV(response.data.results);
-      });
+    axiosConfig.get(`/tv/on_the_air?api_key=${apiKey}`).then((response) => {
+      setOnTV(response.data.results);
+    });
   };
 
   const getTopRated = () => {
-    axiosConfig
-      .get('/tv/top_rated', {
-        params: {
-          api_key: 'cfb5e7441170e569be1265dadbb2df82',
-        },
-      })
-      .then((response) => {
-        setTopRated(response.data.results);
-        setLoading(false);
-      });
+    axiosConfig.get(`/tv/top_rated?api_key=${apiKey}`).then((response) => {
+      setTopRated(response.data.results);
+      setLoading(false);
+    });
   };
 
   const _renderItem = ({item}) => (

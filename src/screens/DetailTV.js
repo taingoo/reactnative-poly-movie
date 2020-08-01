@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {ScrollView, Text, View} from 'react-native';
 import YouTube from 'react-native-youtube';
-import axiosConfig from '../api/axios';
+import axiosConfig, {apiKey} from '../api/axios';
 import Cast from '../components/DetailScreen/Cast';
 import Overview from '../components/DetailScreen/Overview';
 import Season from '../components/DetailScreen/Season';
@@ -22,11 +22,7 @@ export default function DetailTV({navigation, route}) {
 
   useEffect(() => {
     axiosConfig
-      .get(`/tv/${route.params.id}`, {
-        params: {
-          api_key: 'cfb5e7441170e569be1265dadbb2df82',
-        },
-      })
+      .get(`/tv/${route.params.id}?api_key=${apiKey}`)
       .then((response) => {
         setData(response.data);
         setGenres(helper.getGenres(response.data.genres));
@@ -37,22 +33,14 @@ export default function DetailTV({navigation, route}) {
 
     //getCredits;
     axiosConfig
-      .get(`/tv/${route.params.id}/credits`, {
-        params: {
-          api_key: 'cfb5e7441170e569be1265dadbb2df82',
-        },
-      })
+      .get(`/tv/${route.params.id}/credits?api_key=${apiKey}`)
       .then((response) => {
         setCredits(response.data.cast);
       });
 
     //getVideos;
     axiosConfig
-      .get(`/tv/${route.params.id}/videos`, {
-        params: {
-          api_key: 'cfb5e7441170e569be1265dadbb2df82',
-        },
-      })
+      .get(`/tv/${route.params.id}/videos?api_key=${apiKey}`)
       .then((response) => {
         setVideos(helper.getVideoID(response.data.results));
       });
