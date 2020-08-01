@@ -15,35 +15,30 @@ export default function MovieScreen() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getPopular();
-    getAiring();
-    getOnTV();
-    getTopRated();
+    getTVs();
   }, []);
 
-  const getPopular = () => {
-    axiosConfig.get(`/tv/popular?api_key=${apiKey}`).then((response) => {
-      setPopular(response.data.results);
-    });
-  };
+  const getTVs = async () => {
+    try {
+      const getPopular = axiosConfig.get(`/tv/popular?api_key=${apiKey}`);
+      const getAiring = axiosConfig.get(`/tv/airing_today?api_key=${apiKey}`);
+      const getOnTV = axiosConfig.get(`/tv/on_the_air?api_key=${apiKey}`);
+      const getTopRated = axiosConfig.get(`/tv/top_rated?api_key=${apiKey}`);
+      const [
+        popularData,
+        aringData,
+        onTVData,
+        topRatedData,
+      ] = await Promise.all([getPopular, getAiring, getOnTV, getTopRated]);
 
-  const getAiring = () => {
-    axiosConfig.get(`/tv/airing_today?api_key=${apiKey}`).then((response) => {
-      setAiring(response.data.results);
-    });
-  };
-
-  const getOnTV = () => {
-    axiosConfig.get(`/tv/on_the_air?api_key=${apiKey}`).then((response) => {
-      setOnTV(response.data.results);
-    });
-  };
-
-  const getTopRated = () => {
-    axiosConfig.get(`/tv/top_rated?api_key=${apiKey}`).then((response) => {
-      setTopRated(response.data.results);
+      setPopular(popularData.data.results);
+      setAiring(aringData.data.results);
+      setOnTV(onTVData.data.results);
+      setTopRated(topRatedData.data.results);
       setLoading(false);
-    });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   const _renderItem = ({item}) => (
