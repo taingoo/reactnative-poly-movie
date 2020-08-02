@@ -39,7 +39,12 @@ export default function ViewAllTVScreen({route}) {
           data={movie}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
-            <TVItem goTo="DetailMovie" id={item.id} image={item.poster_path} />
+            <TVItem
+              goTo="DetailMovie"
+              id={item.id}
+              image={item.poster_path}
+              title={item.name}
+            />
           )}
           onEndReached={() => setPage(page + 1)}
           onEndReachedThreshold={0.1}

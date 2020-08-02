@@ -8,10 +8,10 @@ import SearchBar from '../components/SearchBar';
 import Title from '../components/Title';
 
 export default function MovieScreen() {
-  const [popular, setPopular] = useState([]);
-  const [airing, setAiring] = useState([]);
-  const [onTV, setOnTV] = useState([]);
-  const [toprated, setTopRated] = useState([]);
+  const [popular, setPopular] = useState();
+  const [airing, setAiring] = useState();
+  const [onTV, setOnTV] = useState();
+  const [toprated, setTopRated] = useState();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -42,7 +42,12 @@ export default function MovieScreen() {
   };
 
   const _renderItem = ({item}) => (
-    <TVItem goTo="DetailTV" id={item.id} image={item.backdrop_path} />
+    <TVItem
+      goTo="DetailTV"
+      id={item.id}
+      image={item.backdrop_path}
+      title={item.name}
+    />
   );
 
   const _renderList = (title, tag, data) => {

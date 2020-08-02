@@ -10,11 +10,11 @@ import common from '../themes/common';
 import * as helper from '../utils/helper';
 
 export default function DetailMovie({navigation, route}) {
-  const [data, setData] = useState({});
+  const [data, setData] = useState();
   const [genres, setGenres] = useState('-');
   const [runtime, setRuntime] = useState('-');
-  const [credits, setCredits] = useState([]);
-  const [videos, setVideos] = useState([]);
+  const [credits, setCredits] = useState();
+  const [videos, setVideos] = useState();
   const [height, setHeight] = useState();
   const [loading, setLoading] = useState(true);
 
