@@ -75,7 +75,7 @@ export default function MovieScreen() {
         {_renderList('POPULAR', 'popular', popular)}
         {_renderList('AIRING TODAY', 'airing', airing)}
         {_renderList('ON TV', 'ontv', onTV)}
-        {_renderList('TOP RATED', 'toprated', toprated)}
+        {_renderList('TOP RATED', 'top_rated', toprated)}
       </ScrollView>
     </View>
   );

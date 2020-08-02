@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, View} from 'react-native';
-import axiosConfig from '../api/axios';
+import {ScrollView} from 'react-native-gesture-handler';
+import axiosConfig, {apiKey} from '../api/axios';
 import PeopleItem from '../components/List/PeopleItem';
 import PeopleHolder from '../components/Placeholder/PeopleHolder';
 import SearchBar from '../components/SearchBar';

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, StyleSheet, View} from 'react-native';
+import {FlatList, StyleSheet, View, ActivityIndicator} from 'react-native';
 import axiosConfig from '../api/axios';
 import TVItem from '../components/List/TVItem';
 import NavBar from '../components/NavBar';
@@ -15,6 +15,7 @@ export default function ViewAllTVScreen({route}) {
   const [data, setData] = useState({});
   const [movie, setMovie] = useState([]);
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState('none');
   const tag = route.params.tag;
 
   useEffect(() => {
@@ -28,8 +29,14 @@ export default function ViewAllTVScreen({route}) {
       .then((response) => {
         setData(response.data);
         setMovie((oldTV) => oldTV.concat(response.data.results));
+        setLoading('none');
       });
   }, [page, tag]);
+
+  const _loading = () => {
+    setLoading('flex');
+    setPage(page + 1);
+  };
 
   return (
     <View style={styles.container}>
@@ -46,14 +53,22 @@ export default function ViewAllTVScreen({route}) {
               title={item.name}
             />
           )}
-          onEndReached={() => setPage(page + 1)}
+          onEndReached={() => {
+            _loading();
+          }}
           onEndReachedThreshold={0.1}
         />
+        <View style={{padding: 10, display: `${loading}`}}>
+          <ActivityIndicator size="small" color="gray" />
+        </View>
       </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {flex: 1, marginBottom: 120},
+  container: {
+    flex: 1,
+    marginBottom: 150,
+  },
 });
