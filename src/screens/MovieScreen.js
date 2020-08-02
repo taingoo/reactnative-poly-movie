@@ -52,6 +52,20 @@ export default function MovieScreen() {
     <MovieItem goTo="DetailMovie" id={item.id} image={item.poster_path} />
   );
 
+  const _renderList = (title, tag, data) => {
+    return (
+      <>
+        <Title title={title} goTo="ViewAllMovieScreen" tag={tag} />
+        <FlatList
+          horizontal
+          data={data}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={_renderItem}
+        />
+      </>
+    );
+  };
+
   if (loading) {
     return <MovieHolder />;
   }
@@ -60,37 +74,10 @@ export default function MovieScreen() {
       <SearchBar goTo="SearchScreen" backTo="Main" tag="movie" />
 
       <ScrollView style={{paddingHorizontal: 5}}>
-        <Title title="POPULAR" goTo="ViewAllMovieScreen" tag="popular" />
-        <FlatList
-          horizontal
-          data={popular}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={_renderItem}
-        />
-
-        <Title title="NOW PLAYING" goTo="ViewAllMovieScreen" tag="nowplaying" />
-        <FlatList
-          horizontal
-          data={nowplaying}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={_renderItem}
-        />
-
-        <Title title="UP COMING" goTo="ViewAllMovieScreen" tag="upcoming" />
-        <FlatList
-          horizontal
-          data={upcoming}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={_renderItem}
-        />
-
-        <Title title="TOP RATED" goTo="ViewAllMovieScreen" tag="toprated" />
-        <FlatList
-          horizontal
-          data={toprated}
-          keyExtractor={(item, index) => index.toString()}
-          renderItem={_renderItem}
-        />
+        {_renderList('POPULAR', 'popular', popular)}
+        {_renderList('NOW PLAYING', 'nowplaying', nowplaying)}
+        {_renderList('UP COMING', 'upcoming', upcoming)}
+        {_renderList('TOP RATED', 'toprated', toprated)}
       </ScrollView>
     </View>
   );
