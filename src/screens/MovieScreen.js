@@ -8,10 +8,10 @@ import SearchBar from '../components/SearchBar';
 import Title from '../components/Title';
 
 export default function MovieScreen() {
-  const [popular, setPopular] = useState();
-  const [nowplaying, setNowPlaying] = useState();
-  const [upcoming, setUpComing] = useState();
-  const [toprated, setTopRated] = useState();
+  const [popular, setPopular] = useState([]);
+  const [nowplaying, setNowPlaying] = useState([]);
+  const [upcoming, setUpComing] = useState([]);
+  const [toprated, setTopRated] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
