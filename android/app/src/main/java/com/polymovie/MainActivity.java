@@ -19,7 +19,7 @@ public class MainActivity extends ReactActivity {
         SplashScreen.show(MainActivity.this);
         super.onCreate(savedInstanceState);
 
-        new Handler().postDelayed(() -> SplashScreen.hide(MainActivity.this), 1500);
+        //new Handler().postDelayed(() -> SplashScreen.hide(MainActivity.this), 1500);
     }
 
     @Override
