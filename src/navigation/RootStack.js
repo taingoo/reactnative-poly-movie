@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 export default function RootStack() {
   useEffect(() => {
     SplashScreen.hide();
-  });
+  }, []);
 
   return (
     <NavigationContainer>

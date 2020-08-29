@@ -35,8 +35,10 @@ export default function ViewAllMovieScreen({route}) {
   }, [page, tag]);
 
   const _loading = () => {
-    setLoading('flex');
-    setPage(page + 1);
+    if (page < data.total_pages) {
+      setLoading('flex');
+      setPage(page + 1);
+    }
   };
 
   return (
